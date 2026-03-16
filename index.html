@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>노인 시각 체험</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  #camera-area {
+    flex: 1;
+    position: relative;
+    background: #111;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #filter-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+
+  #start-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #111;
+  }
+
+  #start-screen svg { opacity: 0.5; }
+
+  #start-screen p {
+    font-size: 15px;
+    color: #888;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 2rem;
+  }
+
+  #start-btn {
+    margin-top: 8px;
+    padding: 14px 36px;
+    background: #1e3a6e;
+    border: 1px solid #4a7acf;
+    border-radius: 30px;
+    color: #8bbcff;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  #filter-label {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 14px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+  }
+
+  #bottom-panel {
+    background: #111;
+    border-top: 0.5px solid #2a2a2a;
+    padding: 14px 12px 20px;
+    flex-shrink: 0;
+  }
+
+  #panel-title {
+    color: #666;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  #filter-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .filter-btn {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #aaa;
+    font-size: 10px;
+    padding: 10px 4px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .filter-btn .icon { font-size: 20px; line-height: 1; }
+
+  .filter-btn.active {
+    background: #1a2e50;
+    border-color: #4a7acf;
+    color: #8bbcff;
+  }
+
+  #info-box {
+    background: #1a1a1a;
+    border: 0.5px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+
+  #info-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #eee;
+    margin-bottom: 4px;
+  }
+
+  #info-desc {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div id="camera-area">
+  <video id="video" autoplay playsinline muted></video>
+  <canvas id="filter-canvas"></canvas>
+  <div id="start-screen">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+    <p>카메라를 사용해<br>노인의 시야를 직접 체험합니다</p>
+    <button id="start-btn" onclick="startCamera()">카메라 시작하기</button>
+  </div>
+  <div id="filter-label" style="display:none;">정상 시야</div>
+</div>
+
+<div id="bottom-panel">
+  <div id="panel-title">시야 선택</div>
+  <div id="filter-grid">
+    <button class="filter-btn active" onclick="setFilter('normal')" data-key="normal">
+      <span class="icon">👁️</span>정상
+    </button>
+    <button class="filter-btn" onclick="setFilter('glaucoma')" data-key="glaucoma">
+      <span class="icon">🔵</span>녹내장
+    </button>
+    <button class="filter-btn" onclick="setFilter('cataract')" data-key="cataract">
+      <span class="icon">🌫️</span>백내장
+    </button>
+    <button class="filter-btn" onclick="setFilter('amd')" data-key="amd">
+      <span class="icon">⚫</span>황반변성
+    </button>
+    <button class="filter-btn" onclick="setFilter('presbyopia')" data-key="presbyopia">
+      <span class="icon">🔍</span>노안
+    </button>
+  </div>
+  <div id="info-box">
+    <div id="info-title">정상 시야</div>
+    <div id="info-desc">건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.</div>
+  </div>
+</div>
+
+<script>
+const filters = {
+  normal: {
+    label: '정상 시야',
+    title: '정상 시야',
+    desc: '건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.',
+    draw: (ctx, w, h) => {}
+  },
+  glaucoma: {
+    label: '녹내장',
+    title: '녹내장 (Glaucoma)',
+    desc: '시야 주변부부터 점점 좁아집니다. 터널처럼 중앙만 보이고 바깥이 사라져 넘어질 위험이 높아집니다.',
+    draw: (ctx, w, h) => {
+      const cx = w/2, cy = h/2;
+      const r = Math.min(w,h) * 0.3;
+      const grad = ctx.createRadialGradient(cx,cy,r*0.6, cx,cy,r*1.8);
+      grad.addColorStop(0, 'rgba(0,0,0,0)');
+      grad.addColorStop(0.35, 'rgba(0,0,0,0.55)');
+      grad.addColorStop(1, 'rgba(0,0,0,0.98)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0,0,w,h);
+    }
+  },
+  cataract: {
+    label: '백내장',
+    title: '백내장 (Cataract)',
+    desc: '수정체가 뿌옇게 흐려져 안개 낀 것처럼 보입니다. 빛 번짐이 심하고 색 구분이 어려워집니다.',
+    draw: (ctx, w, h) => {
+      ctx.fillStyle = 'rgba(255,252,230,0.42)';
+      ctx.fillRect(0,0,w,h);
+      for(let i=0;i<5;i++){
+        const gx = w*(0.1+Math.random()*0.8);
+        const gy = h*(0.1+Math.random()*0.8);
+        const g = ctx.createRadialGradient(gx,gy,0,gx,gy,w*0.35);
+        g.addColorStop(0,'rgba(255,255,210,0.2)');
+        g.addColorStop(1,'rgba(255,255,200,0)');
+        ctx.fillStyle=g;
+        ctx.fillRect(0,0,w,h);
+      }
+    }
+  },
+  amd: {
+    label: '황반변성',
+    title: '황반변성 (AMD)',
+    desc: '중심 시야에 검은 반점이 생깁니다. 사람 얼굴 가운데와 글자 중심이 보이지 않아 독서·얼굴 인식이 불가능해집니다.',
+    draw: (ctx, w, h) => {
+      const cx = w/2, cy = h*0.44;
+      const grad = ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*0.2);
+      grad.addColorStop(0,'rgba(5,3,0,0.96)');
+      grad.addColorStop(0.55,'rgba(20,10,0,0.75)');
+      grad.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=grad;
+      ctx.fillRect(0,0,w,h);
+    }
+  },
+  presbyopia: {
+    label: '노안',
+    title: '노안 (Presbyopia)',
+    desc: '가까운 거리의 초점이 맞지 않아 글자가 흐릿합니다. 스마트폰, 책, 약 라벨 읽기가 어려워집니다.',
+    draw: (ctx, w, h) => {
+      const imageData = ctx.getImageData(0,0,w,h);
+      const d = imageData.data;
+      const temp = new Uint8ClampedArray(d);
+      const radius = 3;
+      for(let y=0;y<h;y++){
+        for(let x=0;x<w;x++){
+          let r=0,g=0,b=0,cnt=0;
+          for(let dy=-radius;dy<=radius;dy++){
+            for(let dx=-radius;dx<=radius;dx++){
+              const nx=x+dx, ny=y+dy;
+              if(nx>=0&&nx<w&&ny>=0&&ny<h){
+                const i=(ny*w+nx)*4;
+                r+=temp[i];g+=temp[i+1];b+=temp[i+2];cnt++;
+              }
+            }
+          }
+          const i=(y*w+x)*4;
+          d[i]=r/cnt;d[i+1]=g/cnt;d[i+2]=b/cnt;
+        }
+      }
+      ctx.putImageData(imageData,0,0);
+    }
+  }
+};
+
+let currentFilter = 'normal';
+let animFrame = null;
+let isRunning = false;
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('filter-canvas');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+function setFilter(key) {
+  currentFilter = key;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.key === key));
+  document.getElementById('filter-label').textContent = filters[key].label;
+  document.getElementById('info-title').textContent = filters[key].title;
+  document.getElementById('info-desc').textContent = filters[key].desc;
+}
+
+function drawLoop() {
+  if (!isRunning) return;
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  if (currentFilter === 'presbyopia') {
+    ctx.drawImage(video, 0, 0, w, h);
+    filters.presbyopia.draw(ctx, w, h);
+  } else if (currentFilter !== 'normal') {
+    filters[currentFilter].draw(ctx, w, h);
+  }
+
+  animFrame = requestAnimationFrame(drawLoop);
+}
+
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: false
+    });
+    video.srcObject = stream;
+    video.style.display = 'block';
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('filter-label').style.display = 'block';
+
+    video.addEventListener('loadedmetadata', () => {
+      canvas.width = video.videoWidth || window.innerWidth;
+      canvas.height = video.videoHeight || window.innerHeight;
+      isRunning = true;
+      if (animFrame) cancelAnimationFrame(animFrame);
+      drawLoop();
+    }, { once: true });
+  } catch(e) {
+    alert('카메라 접근 권한이 필요합니다.\n브라우저 설정에서 카메라 권한을 허용해 주세요.');
+  }
+}
+</script>
+</body>
+</html>
