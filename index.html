@@ -3,334 +3,637 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>노인 시각 체험</title>
+<title>노인 감각 체험 프로그램</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #0a0a0a;
-    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    color: #fff;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+  background: #f0f4f8;
+  min-height: 100dvh;
+  color: #111;
+}
 
-  #camera-area {
-    flex: 1;
-    position: relative;
-    background: #111;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* ── 공통 ── */
+.screen { display: none; }
+.screen.active { display: flex; flex-direction: column; }
+.hidden { display: none !important; }
 
-  #video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+.btn {
+  width: 100%; padding: 14px; border: none; border-radius: 12px;
+  font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-primary { background: #2d6fcf; color: #fff; }
+.btn-primary:hover { background: #1a5ab8; }
+.btn-primary:disabled { background: #a0b8d8; cursor: not-allowed; }
+.btn-secondary { background: #e8f0fb; color: #2d6fcf; margin-top: 10px; }
+.btn-success { background: #27ae60; color: #fff; margin-top: 10px; }
 
-  #filter-canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-  }
+/* ══════════════════════════════
+   홈 화면
+══════════════════════════════ */
+#screen-home {
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  background: linear-gradient(160deg, #1a3a5c 0%, #2d6fcf 100%);
+}
+.home-inner { width: 100%; max-width: 400px; text-align: center; }
+.home-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: #c8e0ff;
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+.home-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+.home-sub {
+  color: #a8c8f0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+.mode-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.mode-card {
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 18px;
+  padding: 22px 20px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s;
+  color: #fff;
+}
+.mode-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+.mode-icon { font-size: 2.4rem; flex-shrink: 0; }
+.mode-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+.mode-desc { font-size: 0.8rem; color: #c0d8f0; line-height: 1.5; }
+.mode-arrow { margin-left: auto; font-size: 1.2rem; opacity: 0.6; flex-shrink: 0; }
+.home-footer { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
 
-  #start-screen {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: #111;
-  }
+/* ══════════════════════════════
+   청각 체험
+══════════════════════════════ */
+#screen-hearing {
+  min-height: 100dvh;
+  background: #f0f4f8;
+}
+.hearing-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 40px; width: 100%; }
+.back-btn {
+  background: none; border: none; color: #2d6fcf; font-size: 0.88rem;
+  cursor: pointer; padding: 0 0 16px; font-family: inherit; display: flex; align-items: center; gap: 4px;
+}
+h1 { font-size: 1.25rem; color: #1a3a5c; text-align: center; margin-bottom: 6px; line-height: 1.4; }
+.subtitle { text-align: center; color: #6b7a8d; font-size: 0.83rem; margin-bottom: 22px; }
+.section-title { font-size: 0.95rem; font-weight: 700; color: #1a3a5c; margin-bottom: 12px; }
 
-  #start-screen svg { opacity: 0.5; }
+.level-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+.level-card {
+  border: 2px solid #d0dae6; border-radius: 14px; padding: 14px 16px;
+  cursor: pointer; transition: all 0.2s; background: #f8fafc;
+}
+.level-card:hover { border-color: #4a90d9; background: #eef5fc; }
+.level-card.selected { border-color: #2d6fcf; background: #eef5fc; }
+.level-card .lv-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
+.level-card .lv-desc { font-size: 0.8rem; color: #6b7a8d; }
+.level-card.mild .lv-name { color: #e6a817; }
+.level-card.moderate .lv-name { color: #d46f20; }
+.level-card.severe .lv-name { color: #c0392b; }
 
-  #start-screen p {
-    font-size: 15px;
-    color: #888;
-    text-align: center;
-    line-height: 1.6;
-    padding: 0 2rem;
-  }
+.progress-label { font-size: 0.8rem; color: #6b7a8d; text-align: right; margin-bottom: 5px; }
+.progress-bar-wrap { background: #e8f0fb; border-radius: 8px; height: 7px; margin-bottom: 18px; }
+.progress-bar { background: #2d6fcf; height: 7px; border-radius: 8px; transition: width 0.4s; }
 
-  #start-btn {
-    margin-top: 8px;
-    padding: 14px 36px;
-    background: #1e3a6e;
-    border: 1px solid #4a7acf;
-    border-radius: 30px;
-    color: #8bbcff;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: inherit;
-  }
+.badge {
+  display: inline-block; background: #eef5fc; color: #2d6fcf;
+  border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px;
+}
+.listen-area {
+  background: #f0f7ff; border-radius: 14px; padding: 20px; text-align: center; margin-bottom: 16px;
+}
+.ear-icon { font-size: 2.8rem; margin-bottom: 8px; display: block; }
+.btn-listen {
+  background: #2d6fcf; color: #fff; border: none; border-radius: 50px;
+  padding: 11px 28px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 6px;
+  font-family: inherit;
+}
+.btn-listen:disabled { background: #a0b8d8; cursor: not-allowed; }
+.replay-count { font-size: 0.78rem; color: #6b7a8d; margin-top: 6px; }
+.playing-ind { display: none; align-items: center; justify-content: center; gap: 5px; margin-top: 8px; color: #2d6fcf; font-size: 0.82rem; font-weight: 700; }
+.playing-ind.on { display: flex; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #2d6fcf; animation: bounce 0.8s infinite; }
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.listen-hint { font-size: 0.8rem; color: #6b7a8d; margin-top: 8px; line-height: 1.5; }
 
-  #filter-label {
-    position: absolute;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    font-size: 14px;
-    padding: 6px 18px;
-    border-radius: 20px;
-    white-space: nowrap;
-    backdrop-filter: blur(4px);
-  }
+textarea {
+  width: 100%; border: 2px solid #d0dae6; border-radius: 12px; padding: 12px;
+  font-size: 1rem; font-family: inherit; resize: none; height: 82px; margin-bottom: 4px;
+  transition: border 0.2s;
+}
+textarea:focus { outline: none; border-color: #2d6fcf; }
+.input-hint { font-size: 0.78rem; color: #a0b8c8; margin-bottom: 12px; }
 
-  #bottom-panel {
-    background: #111;
-    border-top: 0.5px solid #2a2a2a;
-    padding: 14px 12px 20px;
-    flex-shrink: 0;
-  }
+.result-item {
+  background: #f8fafc; border-radius: 12px; padding: 12px 14px; margin-bottom: 10px;
+  border-left: 4px solid #d0dae6;
+}
+.result-item.correct{border-left-color:#27ae60}.result-item.partial{border-left-color:#e6a817}.result-item.wrong{border-left-color:#c0392b}
+.result-label { font-size: 0.73rem; color: #6b7a8d; margin-bottom: 3px; }
+.result-text { font-size: 0.88rem; margin-bottom: 4px; }
+.result-answer { font-weight: 700; }
+.result-score { font-size: 0.78rem; }
+.sc-correct{color:#27ae60}.sc-partial{color:#e6a817}.sc-wrong{color:#c0392b}
 
-  #panel-title {
-    color: #666;
-    font-size: 11px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-  }
+.final-score {
+  text-align: center; padding: 22px;
+  background: linear-gradient(135deg,#eef5fc,#e8f7f0); border-radius: 16px; margin-bottom: 18px;
+}
+.score-number{font-size:2.8rem;font-weight:900;color:#2d6fcf}
+.score-unit{font-size:1rem;color:#6b7a8d}
+.score-comment{font-size:0.87rem;color:#444;margin-top:6px}
 
-  #filter-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 14px;
-  }
+.rehear-item {
+  background: #f8fafc; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.rehear-text{font-size:0.85rem;flex:1;color:#333}
+.btn-rehear {
+  background: #eef5fc; color: #2d6fcf; border: none; border-radius: 8px;
+  padding: 7px 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+  font-family: inherit;
+}
+.btn-rehear:disabled{background:#e0e0e0;color:#aaa;cursor:not-allowed}
+.btn-rehear.done{background:#e8f7f0;color:#27ae60}
 
-  .filter-btn {
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 12px;
-    color: #aaa;
-    font-size: 10px;
-    padding: 10px 4px;
-    cursor: pointer;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    font-family: inherit;
-    transition: background 0.15s, border-color 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
+.complete-area{text-align:center;padding:24px 0}
+.complete-icon{font-size:3rem;margin-bottom:10px}
+.complete-title{font-size:1.15rem;font-weight:900;color:#1a3a5c;margin-bottom:8px}
+.complete-msg{font-size:0.85rem;color:#6b7a8d;line-height:1.7}
 
-  .filter-btn .icon { font-size: 20px; line-height: 1; }
-
-  .filter-btn.active {
-    background: #1a2e50;
-    border-color: #4a7acf;
-    color: #8bbcff;
-  }
-
-  #info-box {
-    background: #1a1a1a;
-    border: 0.5px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 12px 14px;
-  }
-
-  #info-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: #eee;
-    margin-bottom: 4px;
-  }
-
-  #info-desc {
-    font-size: 12px;
-    color: #888;
-    line-height: 1.6;
-  }
+/* ══════════════════════════════
+   시각 체험
+══════════════════════════════ */
+#screen-vision {
+  height: 100dvh;
+  background: #0a0a0a;
+  color: #fff;
+}
+#camera-area {
+  flex: 1; position: relative; background: #111; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; min-height: 0;
+}
+#video { width: 100%; height: 100%; object-fit: cover; display: block; }
+#filter-canvas { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+#vision-start-screen {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 14px; background: #111;
+}
+#vision-start-screen p { font-size: 14px; color: #888; text-align: center; line-height: 1.6; padding: 0 2rem; }
+#start-cam-btn {
+  margin-top: 6px; padding: 12px 30px; background: #1e3a6e; border: 1px solid #4a7acf;
+  border-radius: 30px; color: #8bbcff; font-size: 15px; cursor: pointer; font-family: inherit;
+}
+#filter-label {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.6); color: #fff; font-size: 13px; padding: 5px 16px;
+  border-radius: 20px; white-space: nowrap; backdrop-filter: blur(4px); display: none;
+}
+.vision-back-btn {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(0,0,0,0.55); border: none; color: #8bbcff;
+  border-radius: 20px; padding: 6px 14px; font-size: 13px; cursor: pointer;
+  font-family: inherit; backdrop-filter: blur(4px); z-index: 10;
+}
+#bottom-panel {
+  background: #111; border-top: 0.5px solid #2a2a2a; padding: 12px 12px 18px; flex-shrink: 0;
+}
+#panel-title { color: #666; font-size: 11px; text-align: center; letter-spacing: 0.1em; margin-bottom: 8px; }
+#filter-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 7px; margin-bottom: 12px; }
+.filter-btn {
+  background: #1e1e1e; border: 1px solid #333; border-radius: 12px; color: #aaa;
+  font-size: 10px; padding: 9px 4px; cursor: pointer; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  font-family: inherit; transition: background 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.filter-btn .icon { font-size: 18px; line-height: 1; }
+.filter-btn.active { background: #1a2e50; border-color: #4a7acf; color: #8bbcff; }
+#info-box { background: #1a1a1a; border: 0.5px solid #2a2a2a; border-radius: 12px; padding: 10px 12px; }
+#info-title { font-size: 13px; font-weight: 600; color: #eee; margin-bottom: 3px; }
+#info-desc { font-size: 11px; color: #888; line-height: 1.6; }
 </style>
 </head>
 <body>
 
-<div id="camera-area">
-  <video id="video" autoplay playsinline muted></video>
-  <canvas id="filter-canvas"></canvas>
-  <div id="start-screen">
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2">
-      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-      <circle cx="12" cy="13" r="4"/>
-    </svg>
-    <p>카메라를 사용해<br>노인의 시야를 직접 체험합니다</p>
-    <button id="start-btn" onclick="startCamera()">카메라 시작하기</button>
+<!-- ══ 홈 ══ -->
+<div id="screen-home" class="screen active">
+  <div class="home-inner">
+    <div class="home-badge">디지털 기기 활용 교육</div>
+    <div class="home-title">노인 감각 저하<br>체험 프로그램</div>
+    <div class="home-sub">노인의 시각·청각 저하를 직접 체험하며<br>어르신들의 일상을 공감해 보세요.</div>
+    <div class="mode-cards">
+      <div class="mode-card" onclick="goVision()">
+        <div class="mode-icon">👁️</div>
+        <div>
+          <div class="mode-name">시각 체험</div>
+          <div class="mode-desc">카메라를 통해 녹내장·백내장·황반변성·노안을 직접 체험</div>
+        </div>
+        <div class="mode-arrow">›</div>
+      </div>
+      <div class="mode-card" onclick="goHearing()">
+        <div class="mode-icon">🦻</div>
+        <div>
+          <div class="mode-name">청각 체험</div>
+          <div class="mode-desc">난청 단계별 소리를 듣고 받아쓰기로 청각 저하를 체험</div>
+        </div>
+        <div class="mode-arrow">›</div>
+      </div>
+    </div>
+
   </div>
-  <div id="filter-label" style="display:none;">정상 시야</div>
 </div>
 
-<div id="bottom-panel">
-  <div id="panel-title">시야 선택</div>
-  <div id="filter-grid">
-    <button class="filter-btn active" onclick="setFilter('normal')" data-key="normal">
-      <span class="icon">👁️</span>정상
-    </button>
-    <button class="filter-btn" onclick="setFilter('glaucoma')" data-key="glaucoma">
-      <span class="icon">🔵</span>녹내장
-    </button>
-    <button class="filter-btn" onclick="setFilter('cataract')" data-key="cataract">
-      <span class="icon">🌫️</span>백내장
-    </button>
-    <button class="filter-btn" onclick="setFilter('amd')" data-key="amd">
-      <span class="icon">⚫</span>황반변성
-    </button>
-    <button class="filter-btn" onclick="setFilter('presbyopia')" data-key="presbyopia">
-      <span class="icon">🔍</span>노안
-    </button>
+<!-- ══ 청각 체험 ══ -->
+<div id="screen-hearing" class="screen">
+  <div class="hearing-wrap">
+
+    <!-- H1: 레벨 선택 -->
+    <div id="h-level">
+      <button class="back-btn" onclick="goHome()">‹ 처음으로</button>
+      <h1>🦻 청각 저하 체험</h1>
+      <p class="subtitle">이어폰을 착용하고 단계를 선택해 주세요</p>
+      <p class="section-title">난청 단계 선택</p>
+      <div class="level-cards">
+        <div class="level-card mild" onclick="selectLevel('mild',this)">
+          <div class="lv-name">🟡 경도 난청 (25~40dB)</div>
+          <div class="lv-desc">작은 소리가 잘 안 들리고, 조용한 환경에서는 대화 가능</div>
+        </div>
+        <div class="level-card moderate" onclick="selectLevel('moderate',this)">
+          <div class="lv-name">🟠 중도 난청 (41~60dB)</div>
+          <div class="lv-desc">일상 대화가 어렵고, 큰 소리도 부분적으로 들림</div>
+        </div>
+        <div class="level-card severe" onclick="selectLevel('severe',this)">
+          <div class="lv-name">🔴 고도 난청 (61~80dB)</div>
+          <div class="lv-desc">거의 들리지 않으며, 보청기 없이는 대화 불가</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="btn-start-hearing" onclick="startHearing()" disabled>체험 시작하기</button>
+    </div>
+
+    <!-- H2: 문제 -->
+    <div id="h-quiz" class="hidden">
+      <div class="progress-label" id="h-prog-label">1 / 3</div>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="h-prog-bar" style="width:33%"></div></div>
+      <div class="badge" id="h-situation">병원 접수창구</div>
+      <div class="listen-area">
+        <span class="ear-icon">🦻</span>
+        <button class="btn-listen" id="btn-play" onclick="playFiltered()">▶ 소리 듣기</button>
+        <div class="replay-count" id="replay-count">남은 재생 횟수: 2회</div>
+        <div class="playing-ind" id="playing-ind">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <span>재생 중...</span>
+        </div>
+        <p class="listen-hint">이어폰을 착용하고 버튼을 눌러 들어보세요</p>
+      </div>
+      <p class="section-title" style="font-size:0.88rem;">들은 내용을 적어보세요</p>
+      <textarea id="user-input" placeholder="들린 대로 최대한 적어주세요..."></textarea>
+      <p class="input-hint">* 정확하지 않아도 괜찮아요.</p>
+      <button class="btn btn-primary" onclick="submitAnswer()">확인</button>
+    </div>
+
+    <!-- H3: 결과 -->
+    <div id="h-result" class="hidden">
+      <h1 style="margin-bottom:6px;">📊 체험 결과</h1>
+      <p class="subtitle" id="h-result-level"></p>
+      <div class="final-score">
+        <div><span class="score-number" id="h-final-score">0</span><span class="score-unit">점</span></div>
+        <div class="score-comment" id="h-score-comment"></div>
+      </div>
+      <p class="section-title">문장별 결과</p>
+      <div id="h-result-list"></div>
+      <button class="btn btn-success" onclick="showRehear()">🔊 보청기 착용 후 다시 듣기</button>
+      <button class="btn btn-secondary" onclick="restartHearing()">↺ 다른 단계로 다시 체험</button>
+    </div>
+
+    <!-- H4: 보청기 후 -->
+    <div id="h-rehear" class="hidden">
+      <h1 style="margin-bottom:6px;">🔊 보청기 착용 후 체험</h1>
+      <p class="subtitle">같은 문장을 선명하게 들어보세요 (각 2회 제한)</p>
+      <div id="h-rehear-list"></div>
+      <button class="btn btn-primary" style="margin-top:16px;" onclick="showHearingComplete()">✅ 체험 완료</button>
+      <button class="btn btn-secondary" onclick="restartHearing()">↺ 처음으로</button>
+    </div>
+
+    <!-- H5: 완료 -->
+    <div id="h-complete" class="hidden">
+      <div class="complete-area">
+        <div class="complete-icon">🎉</div>
+        <div class="complete-title">청각 체험 완료!</div>
+        <p class="complete-msg">
+          노인성 난청을 직접 체험해 보셨습니다.<br>
+          어르신들이 매일 경험하는 어려움에<br>
+          한 걸음 더 가까이 다가가셨습니다. 💙
+        </p>
+        <button class="btn btn-primary" style="margin-top:22px;" onclick="goHome()">🏠 처음으로 돌아가기</button>
+        <button class="btn btn-secondary" onclick="goVision()">👁️ 시각 체험도 해보기</button>
+      </div>
+    </div>
+
   </div>
-  <div id="info-box">
-    <div id="info-title">정상 시야</div>
-    <div id="info-desc">건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.</div>
+</div>
+
+<!-- ══ 시각 체험 ══ -->
+<div id="screen-vision" class="screen" style="height:100dvh;">
+  <div id="camera-area" style="flex:1;position:relative;">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="filter-canvas"></canvas>
+    <div id="vision-start-screen">
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <p>카메라를 사용해<br>노인의 시야를 직접 체험합니다</p>
+      <button id="start-cam-btn" onclick="startCamera()">카메라 시작하기</button>
+    </div>
+    <div id="filter-label">정상 시야</div>
+    <button class="vision-back-btn" onclick="goHome()">‹ 처음으로</button>
+  </div>
+  <div id="bottom-panel">
+    <div id="panel-title">시야 선택</div>
+    <div id="filter-grid">
+      <button class="filter-btn active" onclick="setVFilter('normal')" data-key="normal"><span class="icon">👁️</span>정상</button>
+      <button class="filter-btn" onclick="setVFilter('glaucoma')" data-key="glaucoma"><span class="icon">🔵</span>녹내장</button>
+      <button class="filter-btn" onclick="setVFilter('cataract')" data-key="cataract"><span class="icon">🌫️</span>백내장</button>
+      <button class="filter-btn" onclick="setVFilter('amd')" data-key="amd"><span class="icon">⚫</span>황반변성</button>
+      <button class="filter-btn" onclick="setVFilter('presbyopia')" data-key="presbyopia"><span class="icon">🔍</span>노안</button>
+    </div>
+    <div id="info-box">
+      <div id="info-title">정상 시야</div>
+      <div id="info-desc">건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.</div>
+    </div>
   </div>
 </div>
 
 <script>
-const filters = {
-  normal: {
-    label: '정상 시야',
-    title: '정상 시야',
-    desc: '건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.',
-    draw: (ctx, w, h) => {}
-  },
-  glaucoma: {
-    label: '녹내장',
-    title: '녹내장 (Glaucoma)',
-    desc: '시야 주변부부터 점점 좁아집니다. 터널처럼 중앙만 보이고 바깥이 사라져 넘어질 위험이 높아집니다.',
-    draw: (ctx, w, h) => {
-      const cx = w/2, cy = h/2;
-      const r = Math.min(w,h) * 0.3;
-      const grad = ctx.createRadialGradient(cx,cy,r*0.6, cx,cy,r*1.8);
-      grad.addColorStop(0, 'rgba(0,0,0,0)');
-      grad.addColorStop(0.35, 'rgba(0,0,0,0.55)');
-      grad.addColorStop(1, 'rgba(0,0,0,0.98)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0,0,w,h);
-    }
-  },
-  cataract: {
-    label: '백내장',
-    title: '백내장 (Cataract)',
-    desc: '수정체가 뿌옇게 흐려져 안개 낀 것처럼 보입니다. 빛 번짐이 심하고 색 구분이 어려워집니다.',
-    draw: (ctx, w, h) => {
-      ctx.fillStyle = 'rgba(255,252,230,0.42)';
-      ctx.fillRect(0,0,w,h);
-      for(let i=0;i<5;i++){
-        const gx = w*(0.1+Math.random()*0.8);
-        const gy = h*(0.1+Math.random()*0.8);
-        const g = ctx.createRadialGradient(gx,gy,0,gx,gy,w*0.35);
-        g.addColorStop(0,'rgba(255,255,210,0.2)');
-        g.addColorStop(1,'rgba(255,255,200,0)');
-        ctx.fillStyle=g;
-        ctx.fillRect(0,0,w,h);
-      }
-    }
-  },
-  amd: {
-    label: '황반변성',
-    title: '황반변성 (AMD)',
-    desc: '중심 시야에 검은 반점이 생깁니다. 사람 얼굴 가운데와 글자 중심이 보이지 않아 독서·얼굴 인식이 불가능해집니다.',
-    draw: (ctx, w, h) => {
-      const cx = w/2, cy = h*0.44;
-      const grad = ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*0.2);
-      grad.addColorStop(0,'rgba(5,3,0,0.96)');
-      grad.addColorStop(0.55,'rgba(20,10,0,0.75)');
-      grad.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=grad;
-      ctx.fillRect(0,0,w,h);
-    }
-  },
-  presbyopia: {
-    label: '노안',
-    title: '노안 (Presbyopia)',
-    desc: '가까운 거리의 초점이 맞지 않아 글자가 흐릿합니다. 스마트폰, 책, 약 라벨 읽기가 어려워집니다.',
-    draw: (ctx, w, h) => {
-      const imageData = ctx.getImageData(0,0,w,h);
-      const d = imageData.data;
-      const temp = new Uint8ClampedArray(d);
-      const radius = 3;
-      for(let y=0;y<h;y++){
-        for(let x=0;x<w;x++){
-          let r=0,g=0,b=0,cnt=0;
-          for(let dy=-radius;dy<=radius;dy++){
-            for(let dx=-radius;dx<=radius;dx++){
-              const nx=x+dx, ny=y+dy;
-              if(nx>=0&&nx<w&&ny>=0&&ny<h){
-                const i=(ny*w+nx)*4;
-                r+=temp[i];g+=temp[i+1];b+=temp[i+2];cnt++;
-              }
-            }
-          }
-          const i=(y*w+x)*4;
-          d[i]=r/cnt;d[i+1]=g/cnt;d[i+2]=b/cnt;
-        }
-      }
-      ctx.putImageData(imageData,0,0);
-    }
-  }
+// ════════ 화면 전환 ════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function goHome() { showScreen('screen-home'); }
+function goVision() { showScreen('screen-vision'); }
+function goHearing() { showScreen('screen-hearing'); showHSub('h-level'); }
+
+function showHSub(id) {
+  ['h-level','h-quiz','h-result','h-rehear','h-complete'].forEach(s => {
+    document.getElementById(s).classList.add('hidden');
+  });
+  document.getElementById(id).classList.remove('hidden');
+}
+
+// ════════ 청각 체험 ════════
+const sentences = [
+  {situation:"🏥 병원 접수창구", text:"접수증 가지고 삼 번 창구로 오세요."},
+  {situation:"🏥 병원 접수창구", text:"다음 주 화요일 오전 열 시에 예약됐습니다."},
+  {situation:"🏥 병원 접수창구", text:"보험증이랑 신분증 같이 주세요."},
+  {situation:"🛒 마트·편의점", text:"오늘 삼겹살이 이십 퍼센트 할인 중입니다."},
+  {situation:"🛒 마트·편의점", text:"영수증 필요하시면 말씀해 주세요."},
+  {situation:"🛒 마트·편의점", text:"포인트 카드 가지고 계세요?"},
+  {situation:"🚌 버스·지하철", text:"다음 역은 시청역입니다. 내리실 문은 왼쪽입니다."},
+  {situation:"🚌 버스·지하철", text:"이번 정류장은 중앙 시장 앞입니다."},
+  {situation:"🏦 은행 창구", text:"비밀번호 네 자리를 눌러 주세요."},
+  {situation:"🏦 은행 창구", text:"입금하실 금액이 얼마예요?"},
+  {situation:"🏠 가족 대화", text:"약은 밥 먹고 나서 드세요."},
+  {situation:"🏠 가족 대화", text:"내일 아침 일찍 병원 같이 가요."},
+];
+
+const levelConfig = {
+  mild:     {label:"경도 난청", vol:0.75, rate:0.84, pitch:0.95},
+  moderate: {label:"중도 난청", vol:0.50, rate:0.78, pitch:0.85},
+  severe:   {label:"고도 난청", vol:0.28, rate:0.70, pitch:0.70},
 };
 
-let currentFilter = 'normal';
-let animFrame = null;
-let isRunning = false;
+let selLevel = null, quizQ = [], curIdx = 0, userAns = [], scores = [], replayCnt = 0;
+const MAX_REPLAY = 2;
 
-const video = document.getElementById('video');
-const canvas = document.getElementById('filter-canvas');
-const ctx = canvas.getContext('2d', { willReadFrequently: true });
+function selectLevel(lv, el) {
+  selLevel = lv;
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btn-start-hearing').disabled = false;
+}
 
-function setFilter(key) {
-  currentFilter = key;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.key === key));
-  document.getElementById('filter-label').textContent = filters[key].label;
-  document.getElementById('info-title').textContent = filters[key].title;
-  document.getElementById('info-desc').textContent = filters[key].desc;
+function shuffle(a) {
+  let arr = [...a];
+  for (let i = arr.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function startHearing() {
+  quizQ = shuffle(sentences).slice(0, 3);
+  curIdx = 0; userAns = []; scores = [];
+  showHSub('h-quiz');
+  loadQ();
+}
+
+function loadQ() {
+  replayCnt = 0;
+  const q = quizQ[curIdx];
+  document.getElementById('h-prog-label').textContent = `${curIdx+1} / 3`;
+  document.getElementById('h-prog-bar').style.width = `${((curIdx+1)/3)*100}%`;
+  document.getElementById('h-situation').textContent = q.situation;
+  document.getElementById('user-input').value = '';
+  document.getElementById('btn-play').disabled = false;
+  document.getElementById('replay-count').textContent = `남은 재생 횟수: ${MAX_REPLAY}회`;
+  document.getElementById('playing-ind').classList.remove('on');
+}
+
+function playFiltered() {
+  if (replayCnt >= MAX_REPLAY) return;
+  replayCnt++;
+  const left = MAX_REPLAY - replayCnt;
+  document.getElementById('replay-count').textContent = left > 0 ? `남은 재생 횟수: ${left}회` : '재생 횟수를 모두 사용했습니다';
+  if (replayCnt >= MAX_REPLAY) document.getElementById('btn-play').disabled = true;
+
+  const cfg = levelConfig[selLevel];
+  const utter = new SpeechSynthesisUtterance(quizQ[curIdx].text);
+  utter.lang = 'ko-KR';
+  utter.rate = cfg.rate;
+  utter.volume = cfg.vol;
+  utter.pitch = cfg.pitch;
+
+  const ind = document.getElementById('playing-ind');
+  ind.classList.add('on');
+  utter.onend = utter.onerror = () => ind.classList.remove('on');
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+function similarity(a, b) {
+  a = a.replace(/\s/g,''); b = b.replace(/\s/g,'');
+  if (!a || !b) return 0;
+  let common = 0;
+  const bArr = b.split('');
+  for (const ch of a) {
+    const i = bArr.indexOf(ch);
+    if (i !== -1) { common++; bArr.splice(i,1); }
+  }
+  return Math.round((common / Math.max(a.length, b.length)) * 100);
+}
+
+function submitAnswer() {
+  const inp = document.getElementById('user-input').value.trim();
+  if (!inp) { alert('들은 내용을 적어주세요.'); return; }
+  window.speechSynthesis.cancel();
+  userAns.push(inp);
+  scores.push(similarity(inp, quizQ[curIdx].text));
+  curIdx++;
+  if (curIdx < 3) { loadQ(); } else { showResult(); }
+}
+
+function showResult() {
+  showHSub('h-result');
+  const cfg = levelConfig[selLevel];
+  document.getElementById('h-result-level').textContent = `체험 단계: ${cfg.label}`;
+  const avg = Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
+  document.getElementById('h-final-score').textContent = avg;
+  let cmt = avg>=80 ? '비교적 잘 들으셨네요! 경미한 수준의 어려움을 체험하셨습니다.'
+           : avg>=50 ? '상당한 어려움을 느끼셨을 거예요. 어르신들의 일상입니다.'
+           : '거의 들리지 않는 환경을 체험하셨습니다. 어르신들의 매일이 이렇습니다.';
+  document.getElementById('h-score-comment').textContent = cmt;
+
+  const list = document.getElementById('h-result-list');
+  list.innerHTML = '';
+  quizQ.forEach((q,i) => {
+    const s = scores[i];
+    const cls = s>=80?'correct':s>=40?'partial':'wrong';
+    const sc = s>=80?'sc-correct':s>=40?'sc-partial':'sc-wrong';
+    list.innerHTML += `
+      <div class="result-item ${cls}">
+        <div class="result-label">${q.situation}</div>
+        <div class="result-text">정답: <span class="result-answer">${q.text}</span></div>
+        <div class="result-text">내 답: ${userAns[i]}</div>
+        <div class="result-score ${sc}">일치율: ${s}%</div>
+      </div>`;
+  });
+}
+
+function showRehear() {
+  showHSub('h-rehear');
+  const list = document.getElementById('h-rehear-list');
+  list.innerHTML = '';
+  quizQ.forEach((q,i) => {
+    list.innerHTML += `
+      <div class="rehear-item">
+        <div class="rehear-text">${q.situation}<br><strong>${q.text}</strong></div>
+        <button class="btn-rehear" id="rb-${i}" onclick="playClean(${i})">🔊 듣기</button>
+      </div>`;
+  });
+}
+
+const rehearCnt = {};
+function playClean(idx) {
+  if (!rehearCnt[idx]) rehearCnt[idx] = 0;
+  if (rehearCnt[idx] >= 2) return;
+  rehearCnt[idx]++;
+
+  const btn = document.getElementById(`rb-${idx}`);
+  btn.textContent = '재생 중...';
+  btn.disabled = true;
+
+  const utter = new SpeechSynthesisUtterance(quizQ[idx].text);
+  utter.lang = 'ko-KR'; utter.rate = 0.88; utter.volume = 1.0; utter.pitch = 1.0;
+  utter.onend = () => {
+    const left = 2 - rehearCnt[idx];
+    if (left > 0) {
+      btn.textContent = `🔊 듣기 (${left}회 남음)`;
+      btn.disabled = false;
+    } else {
+      btn.textContent = '✅ 완료';
+      btn.classList.add('done');
+      btn.disabled = true;
+    }
+  };
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+function showHearingComplete() { showHSub('h-complete'); }
+function restartHearing() {
+  selLevel = null;
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('btn-start-hearing').disabled = true;
+  Object.keys(rehearCnt).forEach(k => delete rehearCnt[k]);
+  showHSub('h-level');
+}
+
+// ════════ 시각 체험 ════════
+const vFilters = {
+  normal:     {label:'정상 시야', title:'정상 시야', desc:'건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.', draw:(c,w,h)=>{}},
+  glaucoma:   {label:'녹내장', title:'녹내장 (Glaucoma)', desc:'시야 주변부부터 점점 좁아집니다. 터널처럼 중앙만 보이고 바깥이 사라져 넘어질 위험이 높아집니다.',
+    draw:(c,w,h)=>{const cx=w/2,cy=h/2,r=Math.min(w,h)*0.3,g=c.createRadialGradient(cx,cy,r*0.6,cx,cy,r*1.8);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(0.35,'rgba(0,0,0,0.55)');g.addColorStop(1,'rgba(0,0,0,0.98)');c.fillStyle=g;c.fillRect(0,0,w,h);}},
+  cataract:   {label:'백내장', title:'백내장 (Cataract)', desc:'수정체가 뿌옇게 흐려져 안개 낀 것처럼 보입니다. 빛 번짐이 심하고 색 구분이 어려워집니다.',
+    draw:(c,w,h)=>{c.fillStyle='rgba(255,252,230,0.42)';c.fillRect(0,0,w,h);for(let i=0;i<5;i++){const gx=w*(0.1+Math.random()*0.8),gy=h*(0.1+Math.random()*0.8),g=c.createRadialGradient(gx,gy,0,gx,gy,w*0.35);g.addColorStop(0,'rgba(255,255,210,0.2)');g.addColorStop(1,'rgba(255,255,200,0)');c.fillStyle=g;c.fillRect(0,0,w,h);}}},
+  amd:        {label:'황반변성', title:'황반변성 (AMD)', desc:'중심 시야에 검은 반점이 생깁니다. 사람 얼굴 가운데와 글자 중심이 보이지 않아 독서·얼굴 인식이 불가능해집니다.',
+    draw:(c,w,h)=>{const cx=w/2,cy=h*0.44,g=c.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*0.2);g.addColorStop(0,'rgba(5,3,0,0.96)');g.addColorStop(0.55,'rgba(20,10,0,0.75)');g.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=g;c.fillRect(0,0,w,h);}},
+  presbyopia: {label:'노안', title:'노안 (Presbyopia)', desc:'가까운 거리의 초점이 맞지 않아 글자가 흐릿합니다. 스마트폰, 책, 약 라벨 읽기가 어려워집니다.',
+    draw:(c,w,h)=>{const id=c.getImageData(0,0,w,h),d=id.data,t=new Uint8ClampedArray(d),r=3;for(let y=0;y<h;y++)for(let x=0;x<w;x++){let rr=0,gg=0,bb=0,cnt=0;for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&nx<w&&ny>=0&&ny<h){const i=(ny*w+nx)*4;rr+=t[i];gg+=t[i+1];bb+=t[i+2];cnt++;}}const i=(y*w+x)*4;d[i]=rr/cnt;d[i+1]=gg/cnt;d[i+2]=bb/cnt;}c.putImageData(id,0,0);}},
+};
+
+let curVFilter='normal', animFrame=null, camRunning=false;
+const video=document.getElementById('video');
+const vCanvas=document.getElementById('filter-canvas');
+const vCtx=vCanvas.getContext('2d',{willReadFrequently:true});
+
+function setVFilter(k) {
+  curVFilter=k;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===k));
+  document.getElementById('filter-label').textContent=vFilters[k].label;
+  document.getElementById('info-title').textContent=vFilters[k].title;
+  document.getElementById('info-desc').textContent=vFilters[k].desc;
 }
 
 function drawLoop() {
-  if (!isRunning) return;
-  const w = canvas.width, h = canvas.height;
-  ctx.clearRect(0,0,w,h);
-
-  if (currentFilter === 'presbyopia') {
-    ctx.drawImage(video, 0, 0, w, h);
-    filters.presbyopia.draw(ctx, w, h);
-  } else if (currentFilter !== 'normal') {
-    filters[currentFilter].draw(ctx, w, h);
-  }
-
-  animFrame = requestAnimationFrame(drawLoop);
+  if (!camRunning) return;
+  const w=vCanvas.width, h=vCanvas.height;
+  vCtx.clearRect(0,0,w,h);
+  if (curVFilter==='presbyopia') { vCtx.drawImage(video,0,0,w,h); vFilters.presbyopia.draw(vCtx,w,h); }
+  else if (curVFilter!=='normal') { vFilters[curVFilter].draw(vCtx,w,h); }
+  animFrame=requestAnimationFrame(drawLoop);
 }
 
 async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
-      audio: false
+      video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}, audio:false
     });
-    video.srcObject = stream;
-    video.style.display = 'block';
-    document.getElementById('start-screen').style.display = 'none';
-    document.getElementById('filter-label').style.display = 'block';
-
-    video.addEventListener('loadedmetadata', () => {
-      canvas.width = video.videoWidth || window.innerWidth;
-      canvas.height = video.videoHeight || window.innerHeight;
-      isRunning = true;
-      if (animFrame) cancelAnimationFrame(animFrame);
+    video.srcObject=stream;
+    document.getElementById('vision-start-screen').style.display='none';
+    document.getElementById('filter-label').style.display='block';
+    video.addEventListener('loadedmetadata',()=>{
+      vCanvas.width=video.videoWidth||window.innerWidth;
+      vCanvas.height=video.videoHeight||window.innerHeight;
+      camRunning=true;
+      if(animFrame) cancelAnimationFrame(animFrame);
       drawLoop();
-    }, { once: true });
+    },{once:true});
   } catch(e) {
     alert('카메라 접근 권한이 필요합니다.\n브라우저 설정에서 카메라 권한을 허용해 주세요.');
   }
