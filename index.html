@@ -1,643 +1,1781 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="overflow-x-hidden w-full">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>노인 감각 체험 프로그램</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
-  background: #f0f4f8;
-  min-height: 100dvh;
-  color: #111;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI 시대 직업흥미 & 진로설계</title>
+  
+  <!-- iOS 및 모바일 웹앱 최적화 메타태그 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="직업흥미AI">
+  <meta name="theme-color" content="#EA580C">
 
-/* ── 공통 ── */
-.screen { display: none; }
-.screen.active { display: flex; flex-direction: column; }
-.hidden { display: none !important; }
+  <!-- Tailwind CSS (미리 변환해 내장: 외부 CDN·실시간 변환 없음) -->
+  <style>
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.bottom-0{bottom:0}.bottom-2{bottom:.5rem}.bottom-6{bottom:1.5rem}.left-0{left:0}.left-3{left:.75rem}.right-0{right:0}.right-6{right:1.5rem}.top-0{top:0}.top-1\/2{top:50%}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.col-span-full{grid-column:1/-1}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mb-0\.5{margin-bottom:.125rem}.mb-1{margin-bottom:.25rem}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-2\.5{margin-bottom:.625rem}.mb-24{margin-bottom:6rem}.mb-3{margin-bottom:.75rem}.mb-3\.5{margin-bottom:.875rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.ml-0\.5{margin-left:.125rem}.ml-1{margin-left:.25rem}.mr-0\.5{margin-right:.125rem}.mr-1{margin-right:.25rem}.mt-0\.5{margin-top:.125rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.aspect-square{aspect-ratio:1/1}.h-1{height:.25rem}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-2{height:.5rem}.h-2\.5{height:.625rem}.h-4{height:1rem}.h-7{height:1.75rem}.h-auto{height:auto}.min-h-\[36px\]{min-height:36px}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2{width:.5rem}.w-4{width:1rem}.w-7{width:1.75rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.max-w-\[300px\]{max-width:300px}.max-w-full{max-width:100%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-y-1\/2{--tw-translate-y:-50%}.-translate-y-1\/2,.translate-y-0{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-0{--tw-translate-y:0px}.translate-y-20{--tw-translate-y:5rem}.scale-105,.translate-y-20{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.select-all{-webkit-user-select:all;-moz-user-select:all;user-select:all}.resize-none{resize:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.space-x-1>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.25rem*var(--tw-space-x-reverse));margin-left:calc(.25rem*(1 - var(--tw-space-x-reverse)))}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-1\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.375rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.375rem*var(--tw-space-y-reverse))}.space-y-2\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.625rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.625rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem*var(--tw-space-y-reverse))}.self-start{align-self:flex-start}.self-end{align-self:flex-end}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-x-hidden{overflow-x:hidden}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.break-keep{word-break:keep-all}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138/var(--tw-border-opacity,1))}.border-amber-200\/80{border-color:hsla(48,97%,77%,.8)}.border-blue-200{--tw-border-opacity:1;border-color:rgb(191 219 254/var(--tw-border-opacity,1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208/var(--tw-border-opacity,1))}.border-orange-200{--tw-border-opacity:1;border-color:rgb(254 215 170/var(--tw-border-opacity,1))}.border-orange-500{--tw-border-opacity:1;border-color:rgb(249 115 22/var(--tw-border-opacity,1))}.border-orange-500\/30{border-color:rgba(249,115,22,.3)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249/var(--tw-border-opacity,1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}.border-slate-200\/80{border-color:rgba(226,232,240,.8)}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-slate-700\/60{border-color:rgba(51,65,85,.6)}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.bg-\[\#00D084\]{--tw-bg-opacity:1;background-color:rgb(0 208 132/var(--tw-bg-opacity,1))}.bg-\[\#10A37F\]{--tw-bg-opacity:1;background-color:rgb(16 163 127/var(--tw-bg-opacity,1))}.bg-\[\#1A73E8\]{--tw-bg-opacity:1;background-color:rgb(26 115 232/var(--tw-bg-opacity,1))}.bg-\[\#D97706\]{--tw-bg-opacity:1;background-color:rgb(217 119 6/var(--tw-bg-opacity,1))}.bg-amber-50\/70{background-color:rgba(255,251,235,.7)}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11/var(--tw-bg-opacity,1))}.bg-black\/20{background-color:rgba(0,0,0,.2)}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255/var(--tw-bg-opacity,1))}.bg-blue-50\/60{background-color:rgba(239,246,255,.6)}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246/var(--tw-bg-opacity,1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235/var(--tw-bg-opacity,1))}.bg-cyan-500{--tw-bg-opacity:1;background-color:rgb(6 182 212/var(--tw-bg-opacity,1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245/var(--tw-bg-opacity,1))}.bg-emerald-50\/60{background-color:rgba(236,253,245,.6)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-orange-100{--tw-bg-opacity:1;background-color:rgb(255 237 213/var(--tw-bg-opacity,1))}.bg-orange-50{--tw-bg-opacity:1;background-color:rgb(255 247 237/var(--tw-bg-opacity,1))}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22/var(--tw-bg-opacity,1))}.bg-orange-500\/20{background-color:rgba(249,115,22,.2)}.bg-orange-600{--tw-bg-opacity:1;background-color:rgb(234 88 12/var(--tw-bg-opacity,1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247/var(--tw-bg-opacity,1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242/var(--tw-bg-opacity,1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68/var(--tw-bg-opacity,1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252/var(--tw-bg-opacity,1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-900\/95{background-color:rgba(15,23,42,.95)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/20{background-color:hsla(0,0%,100%,.2)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.from-orange-500{--tw-gradient-from:#f97316 var(--tw-gradient-from-position);--tw-gradient-to:rgba(249,115,22,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgba(15,23,42,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-orange-600{--tw-gradient-to:rgba(234,88,12,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#ea580c var(--tw-gradient-via-position),var(--tw-gradient-to)}.via-slate-800{--tw-gradient-to:rgba(30,41,59,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),#1e293b var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-amber-600{--tw-gradient-to:#d97706 var(--tw-gradient-to-position)}.to-slate-900{--tw-gradient-to:#0f172a var(--tw-gradient-to-position)}.p-2{padding:.5rem}.p-2\.5{padding:.625rem}.p-3{padding:.75rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.px-0\.5{padding-left:.125rem;padding-right:.125rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-1\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.pb-1{padding-bottom:.25rem}.pb-1\.5{padding-bottom:.375rem}.pb-2{padding-bottom:.5rem}.pb-3{padding-bottom:.75rem}.pl-8{padding-left:2rem}.pr-1{padding-right:.25rem}.pr-3{padding-right:.75rem}.pt-1{padding-top:.25rem}.pt-3{padding-top:.75rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}.tracking-wider{letter-spacing:.05em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77/var(--tw-text-opacity,1))}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6/var(--tw-text-opacity,1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15/var(--tw-text-opacity,1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246/var(--tw-text-opacity,1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235/var(--tw-text-opacity,1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175/var(--tw-text-opacity,1))}.text-cyan-600{--tw-text-opacity:1;color:rgb(8 145 178/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-emerald-500{--tw-text-opacity:1;color:rgb(16 185 129/var(--tw-text-opacity,1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105/var(--tw-text-opacity,1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70/var(--tw-text-opacity,1))}.text-orange-100{--tw-text-opacity:1;color:rgb(255 237 213/var(--tw-text-opacity,1))}.text-orange-400{--tw-text-opacity:1;color:rgb(251 146 60/var(--tw-text-opacity,1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22/var(--tw-text-opacity,1))}.text-orange-600{--tw-text-opacity:1;color:rgb(234 88 12/var(--tw-text-opacity,1))}.text-orange-700{--tw-text-opacity:1;color:rgb(194 65 12/var(--tw-text-opacity,1))}.text-orange-800{--tw-text-opacity:1;color:rgb(154 52 18/var(--tw-text-opacity,1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234/var(--tw-text-opacity,1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38/var(--tw-text-opacity,1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249/var(--tw-text-opacity,1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85/var(--tw-text-opacity,1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.opacity-100{opacity:1}.opacity-80{opacity:.8}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-inner{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgba(0,0,0,.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-lg,.shadow-md{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-orange-200{--tw-ring-opacity:1;--tw-ring-color:rgb(254 215 170/var(--tw-ring-opacity,1))}.ring-white{--tw-ring-opacity:1;--tw-ring-color:rgb(255 255 255/var(--tw-ring-opacity,1))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-300{transition-duration:.3s}.duration-500{transition-duration:.5s}.hover\:border-slate-300:hover{--tw-border-opacity:1;border-color:rgb(203 213 225/var(--tw-border-opacity,1))}.hover\:bg-\[\#00BA76\]:hover{--tw-bg-opacity:1;background-color:rgb(0 186 118/var(--tw-bg-opacity,1))}.hover\:bg-\[\#0E906F\]:hover{--tw-bg-opacity:1;background-color:rgb(14 144 111/var(--tw-bg-opacity,1))}.hover\:bg-\[\#1557B0\]:hover{--tw-bg-opacity:1;background-color:rgb(21 87 176/var(--tw-bg-opacity,1))}.hover\:bg-\[\#B45309\]:hover{--tw-bg-opacity:1;background-color:rgb(180 83 9/var(--tw-bg-opacity,1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199/var(--tw-bg-opacity,1))}.hover\:bg-blue-100\/70:hover{background-color:rgba(219,234,254,.7)}.hover\:bg-emerald-100\/70:hover{background-color:rgba(209,250,229,.7)}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.hover\:bg-orange-50:hover{--tw-bg-opacity:1;background-color:rgb(255 247 237/var(--tw-bg-opacity,1))}.hover\:bg-orange-500:hover{--tw-bg-opacity:1;background-color:rgb(249 115 22/var(--tw-bg-opacity,1))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.hover\:text-orange-900:hover{--tw-text-opacity:1;color:rgb(124 45 18/var(--tw-text-opacity,1))}.hover\:text-slate-800:hover{--tw-text-opacity:1;color:rgb(30 41 59/var(--tw-text-opacity,1))}.hover\:text-slate-900:hover{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\:ring-orange-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(249 115 22/var(--tw-ring-opacity,1))}@media (min-width:640px){.sm\:w-48{width:12rem}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:space-x-1\.5>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.375rem*var(--tw-space-x-reverse));margin-left:calc(.375rem*(1 - var(--tw-space-x-reverse)))}.sm\:self-auto{align-self:auto}.sm\:p-5{padding:1.25rem}.sm\:p-6{padding:1.5rem}.sm\:p-7{padding:1.75rem}.sm\:p-8{padding:2rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-\[11px\]{font-size:11px}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:.875rem;line-height:1.25rem}.sm\:text-xs{font-size:.75rem;line-height:1rem}.sm\:leading-loose{line-height:2}}@media (min-width:768px){.md\:h-8{height:2rem}.md\:w-8{width:2rem}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:rounded-3xl{border-radius:1.5rem}.md\:p-10{padding:2.5rem}.md\:py-6{padding-top:1.5rem;padding-bottom:1.5rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-sm{font-size:.875rem;line-height:1.25rem}}@media (min-width:1024px){.lg\:col-span-5{grid-column:span 5/span 5}.lg\:col-span-6{grid-column:span 6/span 6}.lg\:col-span-7{grid-column:span 7/span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  </style>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- html2pdf.js CDN (결과분석 PDF 다운로드용) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-.btn {
-  width: 100%; padding: 14px; border: none; border-radius: 12px;
-  font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
-  font-family: inherit;
-}
-.btn-primary { background: #2d6fcf; color: #fff; }
-.btn-primary:hover { background: #1a5ab8; }
-.btn-primary:disabled { background: #a0b8d8; cursor: not-allowed; }
-.btn-secondary { background: #e8f0fb; color: #2d6fcf; margin-top: 10px; }
-.btn-success { background: #27ae60; color: #fff; margin-top: 10px; }
-
-/* ══════════════════════════════
-   홈 화면
-══════════════════════════════ */
-#screen-home {
-  min-height: 100dvh;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 20px;
-  background: linear-gradient(160deg, #1a3a5c 0%, #2d6fcf 100%);
-}
-.home-inner { width: 100%; max-width: 400px; text-align: center; }
-.home-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.15);
-  color: #c8e0ff;
-  border-radius: 20px;
-  padding: 5px 16px;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 18px;
-}
-.home-title {
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 900;
-  line-height: 1.35;
-  margin-bottom: 10px;
-}
-.home-sub {
-  color: #a8c8f0;
-  font-size: 0.88rem;
-  line-height: 1.7;
-  margin-bottom: 36px;
-}
-.mode-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-.mode-card {
-  background: rgba(255,255,255,0.12);
-  border: 1.5px solid rgba(255,255,255,0.25);
-  border-radius: 18px;
-  padding: 22px 20px;
-  cursor: pointer;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  transition: all 0.2s;
-  color: #fff;
-}
-.mode-card:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
-.mode-icon { font-size: 2.4rem; flex-shrink: 0; }
-.mode-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
-.mode-desc { font-size: 0.8rem; color: #c0d8f0; line-height: 1.5; }
-.mode-arrow { margin-left: auto; font-size: 1.2rem; opacity: 0.6; flex-shrink: 0; }
-.home-footer { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
-
-/* ══════════════════════════════
-   청각 체험
-══════════════════════════════ */
-#screen-hearing {
-  min-height: 100dvh;
-  background: #f0f4f8;
-}
-.hearing-wrap { max-width: 480px; margin: 0 auto; padding: 20px 16px 40px; width: 100%; }
-.back-btn {
-  background: none; border: none; color: #2d6fcf; font-size: 0.88rem;
-  cursor: pointer; padding: 0 0 16px; font-family: inherit; display: flex; align-items: center; gap: 4px;
-}
-h1 { font-size: 1.25rem; color: #1a3a5c; text-align: center; margin-bottom: 6px; line-height: 1.4; }
-.subtitle { text-align: center; color: #6b7a8d; font-size: 0.83rem; margin-bottom: 22px; }
-.section-title { font-size: 0.95rem; font-weight: 700; color: #1a3a5c; margin-bottom: 12px; }
-
-.level-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
-.level-card {
-  border: 2px solid #d0dae6; border-radius: 14px; padding: 14px 16px;
-  cursor: pointer; transition: all 0.2s; background: #f8fafc;
-}
-.level-card:hover { border-color: #4a90d9; background: #eef5fc; }
-.level-card.selected { border-color: #2d6fcf; background: #eef5fc; }
-.level-card .lv-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
-.level-card .lv-desc { font-size: 0.8rem; color: #6b7a8d; }
-.level-card.mild .lv-name { color: #e6a817; }
-.level-card.moderate .lv-name { color: #d46f20; }
-.level-card.severe .lv-name { color: #c0392b; }
-
-.progress-label { font-size: 0.8rem; color: #6b7a8d; text-align: right; margin-bottom: 5px; }
-.progress-bar-wrap { background: #e8f0fb; border-radius: 8px; height: 7px; margin-bottom: 18px; }
-.progress-bar { background: #2d6fcf; height: 7px; border-radius: 8px; transition: width 0.4s; }
-
-.badge {
-  display: inline-block; background: #eef5fc; color: #2d6fcf;
-  border-radius: 20px; padding: 4px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px;
-}
-.listen-area {
-  background: #f0f7ff; border-radius: 14px; padding: 20px; text-align: center; margin-bottom: 16px;
-}
-.ear-icon { font-size: 2.8rem; margin-bottom: 8px; display: block; }
-.btn-listen {
-  background: #2d6fcf; color: #fff; border: none; border-radius: 50px;
-  padding: 11px 28px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 6px;
-  font-family: inherit;
-}
-.btn-listen:disabled { background: #a0b8d8; cursor: not-allowed; }
-.replay-count { font-size: 0.78rem; color: #6b7a8d; margin-top: 6px; }
-.playing-ind { display: none; align-items: center; justify-content: center; gap: 5px; margin-top: 8px; color: #2d6fcf; font-size: 0.82rem; font-weight: 700; }
-.playing-ind.on { display: flex; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: #2d6fcf; animation: bounce 0.8s infinite; }
-.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.listen-hint { font-size: 0.8rem; color: #6b7a8d; margin-top: 8px; line-height: 1.5; }
-
-textarea {
-  width: 100%; border: 2px solid #d0dae6; border-radius: 12px; padding: 12px;
-  font-size: 1rem; font-family: inherit; resize: none; height: 82px; margin-bottom: 4px;
-  transition: border 0.2s;
-}
-textarea:focus { outline: none; border-color: #2d6fcf; }
-.input-hint { font-size: 0.78rem; color: #a0b8c8; margin-bottom: 12px; }
-
-.result-item {
-  background: #f8fafc; border-radius: 12px; padding: 12px 14px; margin-bottom: 10px;
-  border-left: 4px solid #d0dae6;
-}
-.result-item.correct{border-left-color:#27ae60}.result-item.partial{border-left-color:#e6a817}.result-item.wrong{border-left-color:#c0392b}
-.result-label { font-size: 0.73rem; color: #6b7a8d; margin-bottom: 3px; }
-.result-text { font-size: 0.88rem; margin-bottom: 4px; }
-.result-answer { font-weight: 700; }
-.result-score { font-size: 0.78rem; }
-.sc-correct{color:#27ae60}.sc-partial{color:#e6a817}.sc-wrong{color:#c0392b}
-
-.final-score {
-  text-align: center; padding: 22px;
-  background: linear-gradient(135deg,#eef5fc,#e8f7f0); border-radius: 16px; margin-bottom: 18px;
-}
-.score-number{font-size:2.8rem;font-weight:900;color:#2d6fcf}
-.score-unit{font-size:1rem;color:#6b7a8d}
-.score-comment{font-size:0.87rem;color:#444;margin-top:6px}
-
-.rehear-item {
-  background: #f8fafc; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-}
-.rehear-text{font-size:0.85rem;flex:1;color:#333}
-.btn-rehear {
-  background: #eef5fc; color: #2d6fcf; border: none; border-radius: 8px;
-  padding: 7px 12px; font-size: 0.8rem; font-weight: 700; cursor: pointer; white-space: nowrap;
-  font-family: inherit;
-}
-.btn-rehear:disabled{background:#e0e0e0;color:#aaa;cursor:not-allowed}
-.btn-rehear.done{background:#e8f7f0;color:#27ae60}
-
-.complete-area{text-align:center;padding:24px 0}
-.complete-icon{font-size:3rem;margin-bottom:10px}
-.complete-title{font-size:1.15rem;font-weight:900;color:#1a3a5c;margin-bottom:8px}
-.complete-msg{font-size:0.85rem;color:#6b7a8d;line-height:1.7}
-
-/* ══════════════════════════════
-   시각 체험
-══════════════════════════════ */
-#screen-vision {
-  height: 100dvh;
-  background: #0a0a0a;
-  color: #fff;
-}
-#camera-area {
-  flex: 1; position: relative; background: #111; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; min-height: 0;
-}
-#video { width: 100%; height: 100%; object-fit: cover; display: block; }
-#filter-canvas { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
-#vision-start-screen {
-  position: absolute; inset: 0; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 14px; background: #111;
-}
-#vision-start-screen p { font-size: 14px; color: #888; text-align: center; line-height: 1.6; padding: 0 2rem; }
-#start-cam-btn {
-  margin-top: 6px; padding: 12px 30px; background: #1e3a6e; border: 1px solid #4a7acf;
-  border-radius: 30px; color: #8bbcff; font-size: 15px; cursor: pointer; font-family: inherit;
-}
-#filter-label {
-  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-  background: rgba(0,0,0,0.6); color: #fff; font-size: 13px; padding: 5px 16px;
-  border-radius: 20px; white-space: nowrap; backdrop-filter: blur(4px); display: none;
-}
-.vision-back-btn {
-  position: absolute; top: 14px; left: 14px;
-  background: rgba(0,0,0,0.55); border: none; color: #8bbcff;
-  border-radius: 20px; padding: 6px 14px; font-size: 13px; cursor: pointer;
-  font-family: inherit; backdrop-filter: blur(4px); z-index: 10;
-}
-#bottom-panel {
-  background: #111; border-top: 0.5px solid #2a2a2a; padding: 12px 12px 18px; flex-shrink: 0;
-}
-#panel-title { color: #666; font-size: 11px; text-align: center; letter-spacing: 0.1em; margin-bottom: 8px; }
-#filter-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 7px; margin-bottom: 12px; }
-.filter-btn {
-  background: #1e1e1e; border: 1px solid #333; border-radius: 12px; color: #aaa;
-  font-size: 10px; padding: 9px 4px; cursor: pointer; text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-  font-family: inherit; transition: background 0.15s, border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-.filter-btn .icon { font-size: 18px; line-height: 1; }
-.filter-btn.active { background: #1a2e50; border-color: #4a7acf; color: #8bbcff; }
-#info-box { background: #1a1a1a; border: 0.5px solid #2a2a2a; border-radius: 12px; padding: 10px 12px; }
-#info-title { font-size: 13px; font-weight: 600; color: #eee; margin-bottom: 3px; }
-#info-desc { font-size: 11px; color: #888; line-height: 1.6; }
-</style>
-</head>
-<body>
-
-<!-- ══ 홈 ══ -->
-<div id="screen-home" class="screen active">
-  <div class="home-inner">
-    <div class="home-badge">디지털 기기 활용 교육</div>
-    <div class="home-title">노인 감각 저하<br>체험 프로그램</div>
-    <div class="home-sub">노인의 시각·청각 저하를 직접 체험하며<br>어르신들의 일상을 공감해 보세요.</div>
-    <div class="mode-cards">
-      <div class="mode-card" onclick="goVision()">
-        <div class="mode-icon">👁️</div>
-        <div>
-          <div class="mode-name">시각 체험</div>
-          <div class="mode-desc">카메라를 통해 녹내장·백내장·황반변성·노안을 직접 체험</div>
-        </div>
-        <div class="mode-arrow">›</div>
-      </div>
-      <div class="mode-card" onclick="goHearing()">
-        <div class="mode-icon">🦻</div>
-        <div>
-          <div class="mode-name">청각 체험</div>
-          <div class="mode-desc">난청 단계별 소리를 듣고 받아쓰기로 청각 저하를 체험</div>
-        </div>
-        <div class="mode-arrow">›</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══ 청각 체험 ══ -->
-<div id="screen-hearing" class="screen">
-  <div class="hearing-wrap">
-
-    <!-- H1: 레벨 선택 -->
-    <div id="h-level">
-      <button class="back-btn" onclick="goHome()">‹ 처음으로</button>
-      <h1>🦻 청각 저하 체험</h1>
-      <p class="subtitle">이어폰을 착용하고 단계를 선택해 주세요</p>
-      <p class="section-title">난청 단계 선택</p>
-      <div class="level-cards">
-        <div class="level-card mild" onclick="selectLevel('mild',this)">
-          <div class="lv-name">🟡 경도 난청 (25~40dB)</div>
-          <div class="lv-desc">작은 소리가 잘 안 들리고, 조용한 환경에서는 대화 가능</div>
-        </div>
-        <div class="level-card moderate" onclick="selectLevel('moderate',this)">
-          <div class="lv-name">🟠 중도 난청 (41~60dB)</div>
-          <div class="lv-desc">일상 대화가 어렵고, 큰 소리도 부분적으로 들림</div>
-        </div>
-        <div class="level-card severe" onclick="selectLevel('severe',this)">
-          <div class="lv-name">🔴 고도 난청 (61~80dB)</div>
-          <div class="lv-desc">거의 들리지 않으며, 보청기 없이는 대화 불가</div>
-        </div>
-      </div>
-      <button class="btn btn-primary" id="btn-start-hearing" onclick="startHearing()" disabled>체험 시작하기</button>
-    </div>
-
-    <!-- H2: 문제 -->
-    <div id="h-quiz" class="hidden">
-      <div class="progress-label" id="h-prog-label">1 / 3</div>
-      <div class="progress-bar-wrap"><div class="progress-bar" id="h-prog-bar" style="width:33%"></div></div>
-      <div class="badge" id="h-situation">병원 접수창구</div>
-      <div class="listen-area">
-        <span class="ear-icon">🦻</span>
-        <button class="btn-listen" id="btn-play" onclick="playFiltered()">▶ 소리 듣기</button>
-        <div class="replay-count" id="replay-count">남은 재생 횟수: 2회</div>
-        <div class="playing-ind" id="playing-ind">
-          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-          <span>재생 중...</span>
-        </div>
-        <p class="listen-hint">이어폰을 착용하고 버튼을 눌러 들어보세요</p>
-      </div>
-      <p class="section-title" style="font-size:0.88rem;">들은 내용을 적어보세요</p>
-      <textarea id="user-input" placeholder="들린 대로 최대한 적어주세요..."></textarea>
-      <p class="input-hint">* 정확하지 않아도 괜찮아요.</p>
-      <button class="btn btn-primary" onclick="submitAnswer()">확인</button>
-    </div>
-
-    <!-- H3: 결과 -->
-    <div id="h-result" class="hidden">
-      <h1 style="margin-bottom:6px;">📊 체험 결과</h1>
-      <p class="subtitle" id="h-result-level"></p>
-      <div class="final-score">
-        <div><span class="score-number" id="h-final-score">0</span><span class="score-unit">점</span></div>
-        <div class="score-comment" id="h-score-comment"></div>
-      </div>
-      <p class="section-title">문장별 결과</p>
-      <div id="h-result-list"></div>
-      <button class="btn btn-success" onclick="showRehear()">🔊 보청기 착용 후 다시 듣기</button>
-      <button class="btn btn-secondary" onclick="restartHearing()">↺ 다른 단계로 다시 체험</button>
-    </div>
-
-    <!-- H4: 보청기 후 -->
-    <div id="h-rehear" class="hidden">
-      <h1 style="margin-bottom:6px;">🔊 보청기 착용 후 체험</h1>
-      <p class="subtitle">같은 문장을 선명하게 들어보세요 (각 2회 제한)</p>
-      <div id="h-rehear-list"></div>
-      <button class="btn btn-primary" style="margin-top:16px;" onclick="showHearingComplete()">✅ 체험 완료</button>
-      <button class="btn btn-secondary" onclick="restartHearing()">↺ 처음으로</button>
-    </div>
-
-    <!-- H5: 완료 -->
-    <div id="h-complete" class="hidden">
-      <div class="complete-area">
-        <div class="complete-icon">🎉</div>
-        <div class="complete-title">청각 체험 완료!</div>
-        <p class="complete-msg">
-          노인성 난청을 직접 체험해 보셨습니다.<br>
-          어르신들이 매일 경험하는 어려움에<br>
-          한 걸음 더 가까이 다가가셨습니다. 💙
-        </p>
-        <button class="btn btn-primary" style="margin-top:22px;" onclick="goHome()">🏠 처음으로 돌아가기</button>
-        <button class="btn btn-secondary" onclick="goVision()">👁️ 시각 체험도 해보기</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══ 시각 체험 ══ -->
-<div id="screen-vision" class="screen" style="height:100dvh;">
-  <div id="camera-area" style="flex:1;position:relative;">
-    <video id="video" autoplay playsinline muted></video>
-    <canvas id="filter-canvas"></canvas>
-    <div id="vision-start-screen">
-      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.2">
-        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-        <circle cx="12" cy="13" r="4"/>
-      </svg>
-      <p>카메라를 사용해<br>노인의 시야를 직접 체험합니다</p>
-      <button id="start-cam-btn" onclick="startCamera()">카메라 시작하기</button>
-    </div>
-    <div id="filter-label">정상 시야</div>
-    <button class="vision-back-btn" onclick="goHome()">‹ 처음으로</button>
-  </div>
-  <div id="bottom-panel">
-    <div id="panel-title">시야 선택</div>
-    <div id="filter-grid">
-      <button class="filter-btn active" onclick="setVFilter('normal')" data-key="normal"><span class="icon">👁️</span>정상</button>
-      <button class="filter-btn" onclick="setVFilter('glaucoma')" data-key="glaucoma"><span class="icon">🔵</span>녹내장</button>
-      <button class="filter-btn" onclick="setVFilter('cataract')" data-key="cataract"><span class="icon">🌫️</span>백내장</button>
-      <button class="filter-btn" onclick="setVFilter('amd')" data-key="amd"><span class="icon">⚫</span>황반변성</button>
-      <button class="filter-btn" onclick="setVFilter('presbyopia')" data-key="presbyopia"><span class="icon">🔍</span>노안</button>
-    </div>
-    <div id="info-box">
-      <div id="info-title">정상 시야</div>
-      <div id="info-desc">건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.</div>
-    </div>
-  </div>
-</div>
-
-<script>
-// ════════ 화면 전환 ════════
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-function goHome() { showScreen('screen-home'); }
-function goVision() { showScreen('screen-vision'); }
-function goHearing() { showScreen('screen-hearing'); showHSub('h-level'); }
-
-function showHSub(id) {
-  ['h-level','h-quiz','h-result','h-rehear','h-complete'].forEach(s => {
-    document.getElementById(s).classList.add('hidden');
-  });
-  document.getElementById(id).classList.remove('hidden');
-}
-
-// ════════ 청각 체험 ════════
-const sentences = [
-  {situation:"🏥 병원 접수창구", text:"접수증 가지고 삼 번 창구로 오세요."},
-  {situation:"🏥 병원 접수창구", text:"다음 주 화요일 오전 열 시에 예약됐습니다."},
-  {situation:"🏥 병원 접수창구", text:"보험증이랑 신분증 같이 주세요."},
-  {situation:"🛒 마트·편의점", text:"오늘 삼겹살이 이십 퍼센트 할인 중입니다."},
-  {situation:"🛒 마트·편의점", text:"영수증 필요하시면 말씀해 주세요."},
-  {situation:"🛒 마트·편의점", text:"포인트 카드 가지고 계세요?"},
-  {situation:"🚌 버스·지하철", text:"다음 역은 시청역입니다. 내리실 문은 왼쪽입니다."},
-  {situation:"🚌 버스·지하철", text:"이번 정류장은 중앙 시장 앞입니다."},
-  {situation:"🏦 은행 창구", text:"비밀번호 네 자리를 눌러 주세요."},
-  {situation:"🏦 은행 창구", text:"입금하실 금액이 얼마예요?"},
-  {situation:"🏠 가족 대화", text:"약은 밥 먹고 나서 드세요."},
-  {situation:"🏠 가족 대화", text:"내일 아침 일찍 병원 같이 가요."},
-];
-
-const levelConfig = {
-  mild:     {label:"경도 난청", vol:0.75, rate:0.84, pitch:0.95},
-  moderate: {label:"중도 난청", vol:0.50, rate:0.78, pitch:0.85},
-  severe:   {label:"고도 난청", vol:0.28, rate:0.70, pitch:0.70},
-};
-
-let selLevel = null, quizQ = [], curIdx = 0, userAns = [], scores = [], replayCnt = 0;
-const MAX_REPLAY = 2;
-
-function selectLevel(lv, el) {
-  selLevel = lv;
-  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  document.getElementById('btn-start-hearing').disabled = false;
-}
-
-function shuffle(a) {
-  let arr = [...a];
-  for (let i = arr.length-1; i > 0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i],arr[j]] = [arr[j],arr[i]];
-  }
-  return arr;
-}
-
-function startHearing() {
-  quizQ = shuffle(sentences).slice(0, 3);
-  curIdx = 0; userAns = []; scores = [];
-  showHSub('h-quiz');
-  loadQ();
-}
-
-function loadQ() {
-  replayCnt = 0;
-  const q = quizQ[curIdx];
-  document.getElementById('h-prog-label').textContent = `${curIdx+1} / 3`;
-  document.getElementById('h-prog-bar').style.width = `${((curIdx+1)/3)*100}%`;
-  document.getElementById('h-situation').textContent = q.situation;
-  document.getElementById('user-input').value = '';
-  document.getElementById('btn-play').disabled = false;
-  document.getElementById('replay-count').textContent = `남은 재생 횟수: ${MAX_REPLAY}회`;
-  document.getElementById('playing-ind').classList.remove('on');
-}
-
-function playFiltered() {
-  if (replayCnt >= MAX_REPLAY) return;
-  replayCnt++;
-  const left = MAX_REPLAY - replayCnt;
-  document.getElementById('replay-count').textContent = left > 0 ? `남은 재생 횟수: ${left}회` : '재생 횟수를 모두 사용했습니다';
-  if (replayCnt >= MAX_REPLAY) document.getElementById('btn-play').disabled = true;
-
-  const cfg = levelConfig[selLevel];
-  const utter = new SpeechSynthesisUtterance(quizQ[curIdx].text);
-  utter.lang = 'ko-KR';
-  utter.rate = cfg.rate;
-  utter.volume = cfg.vol;
-  utter.pitch = cfg.pitch;
-
-  const ind = document.getElementById('playing-ind');
-  ind.classList.add('on');
-  utter.onend = utter.onerror = () => ind.classList.remove('on');
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter);
-}
-
-function similarity(a, b) {
-  a = a.replace(/\s/g,''); b = b.replace(/\s/g,'');
-  if (!a || !b) return 0;
-  let common = 0;
-  const bArr = b.split('');
-  for (const ch of a) {
-    const i = bArr.indexOf(ch);
-    if (i !== -1) { common++; bArr.splice(i,1); }
-  }
-  return Math.round((common / Math.max(a.length, b.length)) * 100);
-}
-
-function submitAnswer() {
-  const inp = document.getElementById('user-input').value.trim();
-  if (!inp) { alert('들은 내용을 적어주세요.'); return; }
-  window.speechSynthesis.cancel();
-  userAns.push(inp);
-  scores.push(similarity(inp, quizQ[curIdx].text));
-  curIdx++;
-  if (curIdx < 3) { loadQ(); } else { showResult(); }
-}
-
-function showResult() {
-  showHSub('h-result');
-  const cfg = levelConfig[selLevel];
-  document.getElementById('h-result-level').textContent = `체험 단계: ${cfg.label}`;
-  const avg = Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);
-  document.getElementById('h-final-score').textContent = avg;
-  let cmt = avg>=80 ? '비교적 잘 들으셨네요! 경미한 수준의 어려움을 체험하셨습니다.'
-           : avg>=50 ? '상당한 어려움을 느끼셨을 거예요. 어르신들의 일상입니다.'
-           : '거의 들리지 않는 환경을 체험하셨습니다. 어르신들의 매일이 이렇습니다.';
-  document.getElementById('h-score-comment').textContent = cmt;
-
-  const list = document.getElementById('h-result-list');
-  list.innerHTML = '';
-  quizQ.forEach((q,i) => {
-    const s = scores[i];
-    const cls = s>=80?'correct':s>=40?'partial':'wrong';
-    const sc = s>=80?'sc-correct':s>=40?'sc-partial':'sc-wrong';
-    list.innerHTML += `
-      <div class="result-item ${cls}">
-        <div class="result-label">${q.situation}</div>
-        <div class="result-text">정답: <span class="result-answer">${q.text}</span></div>
-        <div class="result-text">내 답: ${userAns[i]}</div>
-        <div class="result-score ${sc}">일치율: ${s}%</div>
-      </div>`;
-  });
-}
-
-function showRehear() {
-  showHSub('h-rehear');
-  const list = document.getElementById('h-rehear-list');
-  list.innerHTML = '';
-  quizQ.forEach((q,i) => {
-    list.innerHTML += `
-      <div class="rehear-item">
-        <div class="rehear-text">${q.situation}<br><strong>${q.text}</strong></div>
-        <button class="btn-rehear" id="rb-${i}" onclick="playClean(${i})">🔊 듣기</button>
-      </div>`;
-  });
-}
-
-const rehearCnt = {};
-function playClean(idx) {
-  if (!rehearCnt[idx]) rehearCnt[idx] = 0;
-  if (rehearCnt[idx] >= 2) return;
-  rehearCnt[idx]++;
-
-  const btn = document.getElementById(`rb-${idx}`);
-  btn.textContent = '재생 중...';
-  btn.disabled = true;
-
-  const utter = new SpeechSynthesisUtterance(quizQ[idx].text);
-  utter.lang = 'ko-KR'; utter.rate = 0.88; utter.volume = 1.0; utter.pitch = 1.0;
-  utter.onend = () => {
-    const left = 2 - rehearCnt[idx];
-    if (left > 0) {
-      btn.textContent = `🔊 듣기 (${left}회 남음)`;
-      btn.disabled = false;
-    } else {
-      btn.textContent = '✅ 완료';
-      btn.classList.add('done');
-      btn.disabled = true;
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
     }
-  };
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter);
-}
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      position: relative;
+      background-color: #F8FAFC;
+      word-break: keep-all; /* 한글 단어 끊김 방지 */
+      overflow-wrap: break-word;
+    }
+    .break-keep {
+      word-break: keep-all;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col overflow-x-hidden w-full break-keep">
 
-function showHearingComplete() { showHSub('h-complete'); }
-function restartHearing() {
-  selLevel = null;
-  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
-  document.getElementById('btn-start-hearing').disabled = true;
-  Object.keys(rehearCnt).forEach(k => delete rehearCnt[k]);
-  showHSub('h-level');
-}
+  <!-- 상단 네비게이션 헤더 -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm w-full">
+    <div class="max-w-5xl mx-auto px-3.5 h-14 flex items-center justify-between">
+      
+      <!-- 로고 -->
+      <div class="flex items-center space-x-2 cursor-pointer shrink-0" onclick="goToStep(0)">
+        <span class="inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-lg bg-orange-600 text-white font-bold shadow-sm">
+          <i class="fa-solid fa-compass text-xs md:text-sm"></i>
+        </span>
+        <span class="font-extrabold text-slate-900 text-sm md:text-base tracking-tight">직업흥미AI</span>
+      </div>
+      
+      <!-- 상단 4단계 네비게이션 -->
+      <nav class="flex items-center space-x-1 sm:space-x-1.5 text-xs font-semibold shrink-0">
+        <button id="nav-step-1" onclick="goToStep(1)" class="px-1.5 py-1 rounded-md text-slate-600 hover:bg-slate-100 transition flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">1</span>
+          <span class="text-[11px] sm:text-xs">흥미검사</span>
+        </button>
+        <span class="text-slate-300 text-[9px]">›</span>
+        <button id="nav-step-2" onclick="goToStep(2)" class="px-1.5 py-1 rounded-md text-slate-600 hover:bg-slate-100 transition flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">2</span>
+          <span class="text-[11px] sm:text-xs">결과분석</span>
+        </button>
+        <span class="text-slate-300 text-[9px]">›</span>
+        <button id="nav-step-3" onclick="goToStep(3)" class="px-1.5 py-1 rounded-md text-slate-600 hover:bg-slate-100 transition flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">3</span>
+          <span class="text-[11px] sm:text-xs">신직업</span>
+        </button>
+        <span class="text-slate-300 text-[9px]">›</span>
+        <button id="nav-step-4" onclick="goToStep(4)" class="px-1.5 py-1 rounded-md text-slate-600 hover:bg-slate-100 transition flex items-center gap-1">
+          <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold">4</span>
+          <span class="text-[11px] sm:text-xs">프롬프트</span>
+        </button>
+      </nav>
+    </div>
+    
+    <!-- 프로그레스 바 -->
+    <div class="w-full bg-slate-100 h-1">
+      <div id="top-progress-bar" class="bg-orange-600 h-1 transition-all duration-300" style="width: 15%;"></div>
+    </div>
+  </header>
 
-// ════════ 시각 체험 ════════
-const vFilters = {
-  normal:     {label:'정상 시야', title:'정상 시야', desc:'건강한 눈으로 보는 일반적인 시야입니다. 이것이 기준입니다.', draw:(c,w,h)=>{}},
-  glaucoma:   {label:'녹내장', title:'녹내장 (Glaucoma)', desc:'시야 주변부부터 점점 좁아집니다. 터널처럼 중앙만 보이고 바깥이 사라져 넘어질 위험이 높아집니다.',
-    draw:(c,w,h)=>{const cx=w/2,cy=h/2,r=Math.min(w,h)*0.3,g=c.createRadialGradient(cx,cy,r*0.6,cx,cy,r*1.8);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(0.35,'rgba(0,0,0,0.55)');g.addColorStop(1,'rgba(0,0,0,0.98)');c.fillStyle=g;c.fillRect(0,0,w,h);}},
-  cataract:   {label:'백내장', title:'백내장 (Cataract)', desc:'수정체가 뿌옇게 흐려져 안개 낀 것처럼 보입니다. 빛 번짐이 심하고 색 구분이 어려워집니다.',
-    draw:(c,w,h)=>{c.fillStyle='rgba(255,252,230,0.42)';c.fillRect(0,0,w,h);for(let i=0;i<5;i++){const gx=w*(0.1+Math.random()*0.8),gy=h*(0.1+Math.random()*0.8),g=c.createRadialGradient(gx,gy,0,gx,gy,w*0.35);g.addColorStop(0,'rgba(255,255,210,0.2)');g.addColorStop(1,'rgba(255,255,200,0)');c.fillStyle=g;c.fillRect(0,0,w,h);}}},
-  amd:        {label:'황반변성', title:'황반변성 (AMD)', desc:'중심 시야에 검은 반점이 생깁니다. 사람 얼굴 가운데와 글자 중심이 보이지 않아 독서·얼굴 인식이 불가능해집니다.',
-    draw:(c,w,h)=>{const cx=w/2,cy=h*0.44,g=c.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*0.2);g.addColorStop(0,'rgba(5,3,0,0.96)');g.addColorStop(0.55,'rgba(20,10,0,0.75)');g.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=g;c.fillRect(0,0,w,h);}},
-  presbyopia: {label:'노안', title:'노안 (Presbyopia)', desc:'가까운 거리의 초점이 맞지 않아 글자가 흐릿합니다. 스마트폰, 책, 약 라벨 읽기가 어려워집니다.',
-    draw:(c,w,h)=>{const id=c.getImageData(0,0,w,h),d=id.data,t=new Uint8ClampedArray(d),r=3;for(let y=0;y<h;y++)for(let x=0;x<w;x++){let rr=0,gg=0,bb=0,cnt=0;for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&nx<w&&ny>=0&&ny<h){const i=(ny*w+nx)*4;rr+=t[i];gg+=t[i+1];bb+=t[i+2];cnt++;}}const i=(y*w+x)*4;d[i]=rr/cnt;d[i+1]=gg/cnt;d[i+2]=bb/cnt;}c.putImageData(id,0,0);}},
-};
+  <!-- 메인 컨테이너 -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-3.5 py-4 md:py-6 overflow-x-hidden">
 
-let curVFilter='normal', animFrame=null, camRunning=false;
-const video=document.getElementById('video');
-const vCanvas=document.getElementById('filter-canvas');
-const vCtx=vCanvas.getContext('2d',{willReadFrequently:true});
+    <!-- ========================================== -->
+    <!-- [화면 0] 인트로 화면 (Intro) -->
+    <!-- ========================================== -->
+    <section id="screen-intro" class="screen-view">
+      <div class="bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600 rounded-2xl md:rounded-3xl p-6 md:p-10 text-white shadow-lg mb-6 relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <span class="inline-block px-2.5 py-0.5 bg-white/20 backdrop-blur-md rounded-full text-[11px] font-semibold mb-2.5 tracking-wide">
+            한국보건복지인재원 교안 연계 프로그램
+          </span>
+          <h2 class="text-xl md:text-3xl font-extrabold mb-3 leading-tight">
+            AI 시대의 사회복무와<br>나만의 맞춤 진로설계
+          </h2>
+          <p class="text-orange-100 text-xs md:text-sm leading-relaxed mb-6">
+            홀랜드(Holland) 직업흥미 검사를 통해 나의 성향을 진단하고, 
+            AI 시대의 신직업을 탐색하여 <strong>생성형 AI 맞춤 진로설계 프롬프트</strong>를 만들어보세요.
+          </p>
+          <div>
+            <button onclick="goToStep(1)" class="w-full sm:w-auto px-6 py-3.5 bg-white text-orange-600 rounded-xl font-bold text-sm md:text-base shadow-md hover:bg-orange-50 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-play"></i> 직업흥미 검사 시작하기
+            </button>
+          </div>
+        </div>
+      </div>
 
-function setVFilter(k) {
-  curVFilter=k;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===k));
-  document.getElementById('filter-label').textContent=vFilters[k].label;
-  document.getElementById('info-title').textContent=vFilters[k].title;
-  document.getElementById('info-desc').textContent=vFilters[k].desc;
-}
+      <!-- 3단계 프로세스 카드 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-base font-bold mb-3.5">
+            <i class="fa-solid fa-clipboard-check"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">1단계: 직업흥미 검사</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            홀랜드 6개 유형(R·I·A·S·E·C)의 108개 문항을 체크하고 대표 흥미유형을 도출합니다.
+          </p>
+        </div>
 
-function drawLoop() {
-  if (!camRunning) return;
-  const w=vCanvas.width, h=vCanvas.height;
-  vCtx.clearRect(0,0,w,h);
-  if (curVFilter==='presbyopia') { vCtx.drawImage(video,0,0,w,h); vFilters.presbyopia.draw(vCtx,w,h); }
-  else if (curVFilter!=='normal') { vFilters[curVFilter].draw(vCtx,w,h); }
-  animFrame=requestAnimationFrame(drawLoop);
-}
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-base font-bold mb-3.5">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">2단계: 신직업 탐색</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            나의 대표 흥미유형에 맞는 디지털 전환 신직업을 탐색하고 관심 직업을 찜합니다.
+          </p>
+        </div>
 
-async function startCamera() {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}}, audio:false
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center text-base font-bold mb-3.5">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">3단계: AI 프롬프트 완성</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            전공, MBTI, 가치관을 담은 맞춤 프롬프트를 조립해 생성형 AI에서 3단계 로드맵을 확인합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- [화면 1] 1단계: 직업흥미 검사 (Test) -->
+    <!-- ========================================== -->
+    <section id="screen-step-1" class="screen-view hidden">
+      <div class="mb-3.5 flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold text-orange-600 uppercase tracking-wider">Step 1</span>
+          <h2 class="text-base md:text-lg font-extrabold text-slate-900">홀랜드 직업흥미 검사</h2>
+          <p class="text-[11px] text-slate-500">
+            해당하는 항목을 체크하세요. (체크 1개 = 1점, 각 유형 최대 18점)
+          </p>
+        </div>
+        <button onclick="resetAllChecks()" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition">
+          초기화
+        </button>
+      </div>
+
+      <!-- 6개 유형 상단 탭 버튼 -->
+      <div class="flex overflow-x-auto pb-2 mb-3.5 gap-1.5 border-b border-slate-200 scrollbar-none w-full">
+        <button id="type-tab-R" onclick="selectTypeTab('R')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-red-600 text-white shadow-sm shrink-0">
+          <span>R 현실형</span>
+          <span id="tab-score-R" class="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">0</span>
+        </button>
+        <button id="type-tab-I" onclick="selectTypeTab('I')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
+          <span>I 탐구형</span>
+          <span id="tab-score-I" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-200">0</span>
+        </button>
+        <button id="type-tab-A" onclick="selectTypeTab('A')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
+          <span>A 예술형</span>
+          <span id="tab-score-A" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-200">0</span>
+        </button>
+        <button id="type-tab-S" onclick="selectTypeTab('S')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
+          <span>S 사회형</span>
+          <span id="tab-score-S" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-200">0</span>
+        </button>
+        <button id="type-tab-E" onclick="selectTypeTab('E')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
+          <span>E 진취형</span>
+          <span id="tab-score-E" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-200">0</span>
+        </button>
+        <button id="type-tab-C" onclick="selectTypeTab('C')" class="type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0">
+          <span>C 관습형</span>
+          <span id="tab-score-C" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-200">0</span>
+        </button>
+      </div>
+
+      <!-- 현재 활성화된 유형의 문항 컨테이너 -->
+      <div id="type-content-area" class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm mb-24">
+        <!-- JS로 동적 렌더링 -->
+      </div>
+
+      <!-- 하단 고정 바 -->
+      <div class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md text-white border-t border-slate-800 p-2.5 z-40 shadow-2xl">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+          
+          <div class="flex items-center gap-1 justify-center w-full sm:w-auto" id="bottom-status-badges">
+            <!-- 동적 렌더링 -->
+          </div>
+
+          <div class="flex items-center justify-end gap-2 w-full sm:w-auto" id="bottom-action-buttons">
+            <!-- 동적 렌더링 -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- [화면 2] 2단계: 결과 분석 & PDF 다운로드 (Result) -->
+    <!-- ========================================== -->
+    <section id="screen-step-2" class="screen-view hidden">
+      <div class="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div>
+          <span class="text-[10px] font-bold text-orange-600 uppercase tracking-wider">Step 2</span>
+          <h2 class="text-base md:text-lg font-extrabold text-slate-900">직업흥미 검사 결과 분석</h2>
+          <p class="text-[11px] text-slate-500">
+            홀랜드 육각형 모델로 분석된 나의 대표 유형과 AI 수요 지표입니다.
+          </p>
+        </div>
+        <!-- 📄 직업흥미 검사결과 PDF 저장 버튼 -->
+        <button onclick="downloadHollandPDF()" id="btn-download-holland-pdf" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-xs shadow-md transition flex items-center justify-center gap-2 self-start sm:self-auto shrink-0">
+          <i class="fa-solid fa-file-pdf text-red-400 text-sm"></i>
+          <span>검사 결과 PDF 저장</span>
+        </button>
+      </div>
+
+      <!-- PDF 다운로드 캡처 대상 영역 -->
+      <div id="holland-pdf-report-area">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-6">
+          <!-- 왼쪽: 육각형 레이더 차트 (Canvas) -->
+          <div class="lg:col-span-6 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center justify-center">
+            <div class="w-full flex items-center justify-between mb-2">
+              <h3 class="font-bold text-slate-800 text-xs sm:text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-draw-polygon text-orange-500"></i> 홀랜드 육각형 모델
+              </h3>
+              <span class="text-[10px] text-slate-400">18점 척도</span>
+            </div>
+            <div class="relative w-full max-w-[300px] aspect-square flex items-center justify-center py-2">
+              <canvas id="hollandRadarCanvas" width="300" height="300" class="max-w-full h-auto"></canvas>
+            </div>
+            <div class="w-full pt-3 border-t border-slate-100 grid grid-cols-6 text-center text-[10px] sm:text-xs">
+              <div><span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-0.5"></span>R</div>
+              <div><span class="inline-block w-2 h-2 rounded-full bg-blue-500 mr-0.5"></span>I</div>
+              <div><span class="inline-block w-2 h-2 rounded-full bg-purple-500 mr-0.5"></span>A</div>
+              <div><span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-0.5"></span>S</div>
+              <div><span class="inline-block w-2 h-2 rounded-full bg-amber-500 mr-0.5"></span>E</div>
+              <div><span class="inline-block w-2 h-2 rounded-full bg-cyan-500 mr-0.5"></span>C</div>
+            </div>
+          </div>
+
+          <!-- 오른쪽: 나의 대표 흥미코드 요약 & AI 수요 지표 -->
+          <div class="lg:col-span-6 flex flex-col gap-6">
+            
+            <!-- 1. 대표 흥미코드 카드 -->
+            <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-6 sm:p-7 rounded-2xl shadow-lg border border-slate-700/60 relative overflow-hidden">
+              <div class="relative z-10 space-y-3">
+                <span class="inline-block px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded-full text-[11px] font-bold tracking-wide">
+                  나의 대표 흥미코드
+                </span>
+                <div class="flex items-baseline gap-2.5 my-2">
+                  <h3 id="top-holland-code" class="text-3xl sm:text-4xl font-black text-white tracking-tight">RS</h3>
+                  <span id="top-holland-name" class="text-sm sm:text-base text-slate-300 font-semibold">현실형 · 사회형</span>
+                </div>
+                <div class="pt-3 border-t border-slate-700/60">
+                  <p id="top-holland-desc" class="text-xs sm:text-sm text-slate-200 leading-relaxed sm:leading-loose px-0.5">
+                    <!-- 해설 동적 렌더링 -->
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. AI 수요 및 인간필요도 카드 -->
+            <div class="bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between">
+              <div>
+                <h4 class="font-bold text-slate-800 text-xs sm:text-sm mb-5 flex items-center gap-1.5">
+                  <i class="fa-solid fa-chart-line text-blue-500"></i> AI 시대 수요 및 인간 필요도 (1순위 유형 기준)
+                </h4>
+                <div id="ai-demand-stats" class="space-y-5 px-0.5">
+                  <!-- 동적 생성 -->
+                </div>
+              </div>
+              <div id="ai-demand-comment" class="mt-5 p-4 sm:p-5 bg-slate-50 rounded-xl text-xs text-slate-600 border border-slate-100 leading-relaxed sm:leading-loose">
+                <!-- AI 코멘트 -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 상위 2개 유형 상세 설명 카드 -->
+        <h3 class="font-bold text-slate-900 text-xs md:text-sm mb-3 flex items-center gap-1.5">
+          <i class="fa-solid fa-id-card text-orange-500"></i> 대표 흥미유형 심층 분석
+        </h3>
+        <div id="top-types-detail-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <!-- 동적 렌더링 -->
+        </div>
+      </div>
+
+      <!-- 하단 네비게이션 버튼 -->
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-2.5 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+        <button onclick="goToStep(1)" class="w-full sm:w-auto px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900">
+          <i class="fa-solid fa-arrow-left mr-1"></i> 검사 다시하기
+        </button>
+        <button onclick="goToStep(3)" class="w-full sm:w-auto px-5 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-bold text-xs md:text-sm shadow-md transition flex items-center justify-center gap-2">
+          <span>나의 맞춤 신직업 탐색하기</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- [화면 3] 3단계: AI 신직업 탐색 (Jobs) -->
+    <!-- ========================================== -->
+    <section id="screen-step-3" class="screen-view hidden">
+      <div class="mb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="text-[10px] font-bold text-orange-600 uppercase tracking-wider">Step 3</span>
+          <h2 class="text-base md:text-lg font-extrabold text-slate-900">나의 맞춤 신직업 탐색</h2>
+          <p class="text-[11px] text-slate-500">
+            대표 유형에 맞는 신직업 중 관심 있는 직업을 찜하세요. (프롬프트에 자동 반영)
+          </p>
+        </div>
+        <div class="flex items-center gap-2 self-end sm:self-auto">
+          <div class="bg-orange-50 border border-orange-200 text-orange-700 px-2.5 py-1 rounded-xl text-xs font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-bookmark text-orange-500"></i>
+            <span>찜:</span>
+            <span id="selected-job-count" class="bg-orange-600 text-white px-1.5 py-0.2 rounded-full text-[10px]">0개</span>
+          </div>
+          <button onclick="clearSelectedJobs()" class="text-xs text-slate-500 hover:text-slate-800 underline">
+            비우기
+          </button>
+        </div>
+      </div>
+
+      <!-- 필터 바: 대표 2개 유형만 상단 탭 노출 -->
+      <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm mb-3.5 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+        <div class="flex flex-wrap gap-1.5 w-full sm:w-auto" id="job-filter-buttons">
+          <!-- 동적 생성 -->
+        </div>
+
+        <div class="relative w-full sm:w-48">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="text" id="job-search-input" oninput="searchJobs()" placeholder="직업명 검색 (예: 드론)" class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+      </div>
+
+      <!-- 직업 그리드 -->
+      <div id="jobs-grid-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-5">
+        <!-- 동적 렌더링 -->
+      </div>
+
+      <!-- 하단 네비게이션 버튼 -->
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-2.5 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm sticky bottom-2 z-30">
+        <button onclick="goToStep(2)" class="w-full sm:w-auto px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900">
+          <i class="fa-solid fa-arrow-left mr-1"></i> 결과 분석 다시보기
+        </button>
+        <button onclick="goToStep(4)" class="w-full sm:w-auto px-5 py-2.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-bold text-xs md:text-sm shadow-md transition flex items-center justify-center gap-2">
+          <span>진로정보 입력하고 AI 프롬프트 완성하기</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- [화면 4] 4단계: 정보 입력 및 프롬프트 생성 (Prompt) -->
+    <!-- ========================================== -->
+    <section id="screen-step-4" class="screen-view hidden">
+      <div class="mb-3.5">
+        <span class="text-[10px] font-bold text-orange-600 uppercase tracking-wider">Step 4</span>
+        <h2 class="text-base md:text-lg font-extrabold text-slate-900">AI 맞춤형 진로탐색 프롬프트 빌더</h2>
+        <p class="text-[11px] text-slate-500">
+          교안 p.39~41 서식에 맞춰 유망 기간, 추천 개수, 우선 검토 개수까지 완벽히 조립됩니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-5">
+        <!-- 왼쪽: 조건 입력 폼 -->
+        <div class="lg:col-span-5 space-y-3">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h3 class="font-bold text-slate-800 text-xs md:text-sm border-b border-slate-100 pb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders text-orange-500"></i> 나의 진로 조건 설정
+            </h3>
+
+            <!-- 1. 직업흥미 코드 -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                1. 직업흥미 (Holland 코드)
+              </label>
+              <input type="text" id="input-holland" value="RS" oninput="buildPrompt()" placeholder="예: RS (현실형·사회형)" class="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold">
+            </div>
+
+            <!-- 2. 전공 -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                2. 전공 (학위 또는 관심 분야)
+              </label>
+              <input type="text" id="input-major" value="" oninput="buildPrompt()" placeholder="예: 경영학, 컴퓨터공학, 체육학, 사회복지학, 비전공" class="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold">
+            </div>
+
+            <!-- 3. 성격 (MBTI) -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                3. 성격 유형 (MBTI 등)
+              </label>
+              <select id="input-mbti" onchange="buildPrompt()" class="w-full px-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold">
+                <option value="ESTJ">ESTJ (엄격한 관리자, 조직적·실행력)</option>
+                <option value="ISTJ">ISTJ (청렴결백한 논리주의자, 신중·정확)</option>
+                <option value="ENTJ">ENTJ (대담한 통솔자, 리더십·비전)</option>
+                <option value="INTJ">INTJ (용의주도한 전략가, 분석·통찰)</option>
+                <option value="ESFJ">ESFJ (사교적인 외교관, 친화·협력)</option>
+                <option value="ISFJ">ISFJ (용감한 수호자, 성실·헌신)</option>
+                <option value="ENFJ">ENFJ (정의로운 주인공, 동기부여·소통)</option>
+                <option value="INFJ">INFJ (선의의 옹호자, 이상주의·통찰)</option>
+                <option value="ESTP">ESTP (모험을 즐기는 사업가, 현실적·행동력)</option>
+                <option value="ISTP">ISTP (만능 재주꾼, 도구활용·문제해결)</option>
+                <option value="ENTP">ENTP (뜨거운 논쟁을 즐기는 변론가, 창의·혁신)</option>
+                <option value="INTP">INTP (논리적인 사색가, 탐구·분석)</option>
+                <option value="ESFP">ESFP (자유로운 영혼의 연예인, 열정·에너지)</option>
+                <option value="ISFP">ISFP (호기심 많은 예술가, 감성·유연)</option>
+                <option value="ENFP">ENFP (재기발랄한 활동가, 창의·자유)</option>
+                <option value="INFP">INFP (열정적인 중재자, 진정성·공감)</option>
+              </select>
+            </div>
+
+            <!-- 4. 직업 가치관 -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                4. 직업 가치관 (가장 중시하는 요소)
+              </label>
+              <div id="job-value-chips" class="flex flex-wrap gap-1.5"></div>
+              <div id="job-value-desc" class="mt-2 text-[11px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 leading-relaxed"></div>
+              <input type="hidden" id="input-value" value="성취">
+            </div>
+
+            <!-- 5. 유망 기간 / 추천 직업 수 / 우선 검토 개수 -->
+            <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-100">
+              <div>
+                <label class="block text-[10px] font-bold text-slate-700 mb-0.5">유망 기간</label>
+                <div class="flex items-center">
+                  <input type="number" id="input-years" value="10" min="3" max="30" oninput="buildPrompt()" class="w-full px-1.5 py-1 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none font-bold text-center">
+                  <span class="text-[10px] ml-1 text-slate-500">년</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-700 mb-0.5">추천 개수</label>
+                <div class="flex items-center">
+                  <input type="number" id="input-job-count" value="30" min="5" max="50" oninput="buildPrompt()" class="w-full px-1.5 py-1 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none font-bold text-center">
+                  <span class="text-[10px] ml-1 text-slate-500">개</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-700 mb-0.5">우선 검토</label>
+                <div class="flex items-center">
+                  <input type="number" id="input-priority-count" value="5" min="1" max="10" oninput="buildPrompt()" class="w-full px-1.5 py-1 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none font-bold text-center">
+                  <span class="text-[10px] ml-1 text-slate-500">개</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. 찜한 관심 신직업 -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                6. 찜한 AI 신직업 목록
+              </label>
+              <div id="prompt-selected-jobs-box" class="p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs min-h-[36px] flex flex-wrap gap-1.5 items-center">
+                <span class="text-slate-400 text-[10px]">3단계에서 체크한 직업이 여기에 자동 포함됩니다.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 완성된 프롬프트 카드 & 100% 확실한 복사 및 앱 실행 -->
+        <div class="lg:col-span-7 flex flex-col space-y-3">
+          <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
+                <h3 class="font-bold text-slate-800 text-xs md:text-sm flex items-center gap-1.5">
+                  <i class="fa-solid fa-code text-orange-500"></i> 완성된 전문가 프롬프트
+                </h3>
+                <span class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <i class="fa-solid fa-check"></i> 자동 생성 완료
+                </span>
+              </div>
+
+              <textarea id="generated-prompt-text" rows="13" readonly class="w-full p-3 bg-slate-900 text-slate-100 font-mono text-xs rounded-xl focus:outline-none resize-none leading-relaxed border border-slate-800 shadow-inner select-all"></textarea>
+            </div>
+
+            <!-- 프롬프트 복사 & 스마트폰 앱/새창 실행 버튼 그룹 -->
+            <div class="mt-3 pt-3 border-t border-slate-100 space-y-2.5">
+              
+              <!-- 메인 원클릭 복사 버튼 -->
+              <button onclick="copyPromptToClipboard()" class="w-full py-3.5 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-regular fa-copy text-base"></i>
+                <span>프롬프트 복사하기 (클릭 후 AI 대화창에 붙여넣기)</span>
+              </button>
+
+              <!-- 스마트폰 앱 직접 실행 / 새 탭 열기 버튼 -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <!-- 1. ChatGPT (앱 딥링크 및 웹 새탭) -->
+                <button onclick="smartLaunchAI('chatgpt')" class="py-2.5 px-2 bg-[#10A37F] hover:bg-[#0E906F] text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-bolt text-amber-300 text-[10px]"></i>
+                  <span>ChatGPT 열기</span>
+                </button>
+                <!-- 2. 뤼튼 -->
+                <button onclick="smartLaunchAI('wrtn')" class="py-2.5 px-2 bg-[#00D084] hover:bg-[#00BA76] text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                  <span>뤼튼(wrtn)</span>
+                </button>
+                <!-- 3. Gemini -->
+                <button onclick="smartLaunchAI('gemini')" class="py-2.5 px-2 bg-[#1A73E8] hover:bg-[#1557B0] text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                  <span>Gemini</span>
+                </button>
+                <!-- 4. Claude -->
+                <button onclick="smartLaunchAI('claude')" class="py-2.5 px-2 bg-[#D97706] hover:bg-[#B45309] text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                  <span>Claude</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 교안 p.39 "이어서 물어보기" 추천 질문 가이드 -->
+          <div class="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-3">
+            <h4 class="font-bold text-amber-900 text-xs mb-1.5 flex items-center gap-1.5">
+              <i class="fa-solid fa-comments text-amber-600"></i> 교안 추천 : AI에게 이어서 물어보기 (클릭하면 복사)
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              <button onclick="copyDynamicQuery('table')" class="px-2.5 py-1.5 bg-white text-slate-700 text-[10px] sm:text-[11px] rounded-lg border border-amber-200 hover:bg-amber-100 transition text-left truncate">
+                📋 <span id="label-query-table">추천 직업 표로 정리</span>
+              </button>
+              <button onclick="copyDynamicQuery('detail')" class="px-2.5 py-1.5 bg-white text-slate-700 text-[10px] sm:text-[11px] rounded-lg border border-amber-200 hover:bg-amber-100 transition text-left truncate">
+                🔍 <span>1순위 직업 상세 정보</span>
+              </button>
+              <button onclick="copyDynamicQuery('monthly')" class="px-2.5 py-1.5 bg-white text-slate-700 text-[10px] sm:text-[11px] rounded-lg border border-amber-200 hover:bg-amber-100 transition text-left truncate">
+                📅 <span>1년 준비 계획을 월별로</span>
+              </button>
+              <button onclick="copyDynamicQuery('hrd')" class="px-2.5 py-1.5 bg-white text-slate-700 text-[10px] sm:text-[11px] rounded-lg border border-amber-200 hover:bg-amber-100 transition text-left truncate">
+                🏛️ <span>국비지원/직업훈련 추천</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 공공 진로 포털 안내: 고용24 & 커리어넷 -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm mb-5">
+        <h4 class="font-bold text-slate-800 text-xs md:text-sm mb-1.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-building-columns text-blue-600"></i> 공공 직업·진로 정보 포털 바로가기
+        </h4>
+        <p class="text-[11px] text-slate-500 mb-3 leading-relaxed">
+          AI가 추천한 직업의 공식 채용 공고, 국가공인 자격증 및 학과 정보는 정부 공공 포털에서 직접 조회하실 수 있습니다.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <a href="https://www.work24.go.kr" target="_blank" rel="noopener noreferrer" class="p-3 bg-blue-50/60 hover:bg-blue-100/70 rounded-xl border border-blue-200 flex items-center justify-between transition">
+            <div>
+              <span class="font-extrabold text-xs text-blue-800 block">고용24 (통합 고용포털)</span>
+              <span class="text-[10px] text-blue-600">워크넷 + HRD-Net 직업훈련 통합 공식 사이트</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-blue-600 text-xs"></i>
+          </a>
+          <a href="https://www.career.go.kr" target="_blank" rel="noopener noreferrer" class="p-3 bg-emerald-50/60 hover:bg-emerald-100/70 rounded-xl border border-emerald-200 flex items-center justify-between transition">
+            <div>
+              <span class="font-extrabold text-xs text-emerald-800 block">커리어넷 (진로정보망)</span>
+              <span class="text-[10px] text-emerald-600">교육부 공식 직업정보, 학과정보 및 진로상담</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-emerald-600 text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 하단 네비게이션 -->
+      <div class="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm">
+        <button onclick="goToStep(3)" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900">
+          <i class="fa-solid fa-arrow-left mr-1"></i> 신직업 다시 고르기
+        </button>
+        <button onclick="goToStep(0)" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs transition">
+          <i class="fa-solid fa-house mr-1"></i> 처음 화면으로
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 하단 푸터 -->
+  <footer class="bg-white border-t border-slate-200 py-5 mt-6 text-center text-xs text-slate-400">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="font-medium text-slate-600">한국보건복지인재원 「AI 시대의 사회복무와 진로탐색」 교안 기반 시스템</p>
+      <p class="text-[10px] text-slate-400 mt-0.5">작성 중인 데이터는 브라우저에 안전하게 자동 저장되며 외부로 전송되지 않습니다.</p>
+    </div>
+  </footer>
+
+  <!-- 토스트 알림창 -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-3.5 py-2 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-semibold border border-slate-700">
+      <i id="toast-icon" class="fa-solid fa-check-circle text-emerald-400"></i>
+      <span id="toast-msg">복사되었습니다.</span>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 자바스크립트 비즈니스 로직 -->
+  <!-- ========================================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. 홀랜드 108개 문항 데이터
+    // -------------------------------------------------------------
+    const hollandData = {
+      R: {
+        code: 'R',
+        name: '현실형 (Realistic)',
+        shortName: '현실형',
+        color: '#EF4444',
+        badgeBg: 'bg-red-500',
+        textColor: 'text-red-600',
+        desc: '손, 도구, 기계 다루기를 좋아하고 구체적이고 실용적인 활동을 선호합니다.',
+        features: '손/도구 사용 선호, 신체활동이 수반된 구체적인 일 선호, 말수가 적고 대인관계에 소극적',
+        activities: '기계/도구/장비/신체 사용, 장비 운용/정비, 건축·토목관련 건축/보수',
+        workField: '스포츠, 엔지니어, 군사, 농수산 분야 (운동선수, 엔지니어, 직업군인, 경찰관, 자동차 정비공, 목수, 전기기술자 등)',
+        aiStats: { demand: 72, human: 85, strength: '물리적 판단력' },
+        aiComment: '로봇·자동화 기술을 직접 운용하며, AI와 현장에서 "협업"하는 기술직으로서의 수요가 매우 높습니다.',
+        items: {
+          iam: ['실용적인', '활동적인', '솔직한', '기계/도구 선호', '자연을 사랑하기', '도구와 기계 다루기'],
+          ican: ['전자기계 수리하기', '기계 결함 해결하기', '천막 설치하기', '스포츠 활동', '설계도 읽기', '운전하기'],
+          ilike: ['기계 수리하기', '야외에서 일하기', '신체활동', '손을 활용한 활동', '(기계류를) 조립하기', '컴퓨터 연결하기']
+        }
+      },
+      I: {
+        code: 'I',
+        name: '탐구형 (Investigative)',
+        shortName: '탐구형',
+        color: '#3B82F6',
+        badgeBg: 'bg-blue-500',
+        textColor: 'text-blue-600',
+        desc: '지적 탐구, 논리적 분석, 새로운 지식 및 이론 발견을 선호합니다.',
+        features: '학문적 분야의 연구활동 선호, 논리적이고 분석적인 탐구로 새로운 지식이나 이론 발견',
+        activities: '데이터나 정보를 수집하고 분석, 과학/의학/경제 등의 분야에서 연구 및 기획 활동',
+        workField: '조사연구, 의학, 자연과학, 사회과학 분야 (생물학자, 화학자, 대학교수, 컴퓨터 프로그래머, 데이터 분석가 등)',
+        aiStats: { demand: 91, human: 95, strength: '분석 · 모델링' },
+        aiComment: 'AI 개발·연구의 핵심 주체로서 알고리즘 및 데이터 과학 분야의 수요가 폭발적으로 증가하고 있습니다.',
+        items: {
+          iam: ['분석적인', '과학적인', '관찰적인', '정확한', '도구나 기계 다루기', '독립적인'],
+          ican: ['수학문제 해결하기', '전공이론 이해하기', '복잡한 계산하기', '현미경 사용하기', '전자 설계도 읽기', '데이터 분석하기'],
+          ilike: ['새로운 기술 배우기', '독립적으로 일하기', '실험하기', '과학 또는 기술 관련 잡지읽기', '문제 분석하기', '조립/개발하기']
+        }
+      },
+      A: {
+        code: 'A',
+        name: '예술형 (Artistic)',
+        shortName: '예술형',
+        color: '#8B5CF6',
+        badgeBg: 'bg-purple-500',
+        textColor: 'text-purple-600',
+        desc: '자유롭고 창의적인 방식으로 자신을 표현하고 감성적인 활동을 선호합니다.',
+        features: '자신을 새로운 방식으로 표현 선호, 구조적 활동/상황 기피, 정서에 민감함, 예술적 창의성',
+        activities: '문화활동(문학, 미술, 연극, 영화 등) 선호, 상상력 풍부, 감성적/독창적 창작 활동',
+        workField: '음악, 미술, 극작, 디자인, 미디어 분야 (음악가, 미술가, 전문작가, 번역가, 디자이너, 사진가 등)',
+        aiStats: { demand: 65, human: 97, strength: '감성 · 창의력' },
+        aiComment: '생성형 AI 도구로 창의력을 무한히 증폭시킬 수 있으며, 인간만의 독창적인 감성과 맥락 이해가 핵심 경쟁력입니다.',
+        items: {
+          iam: ['창조적인', '직관적인', '상상력이 풍부한', '혁신적인', '개인주의자', '감성적인'],
+          ican: ['스케치·그리기·색칠하기', '악기 연주하기', '이야기쓰기·시·음악·노래·댄스하기', '패션 디자인 또는 인테리어 하기', '창조적으로 자신을 표현하기', '독창적인 아이디어 내기'],
+          ilike: ['콘서트·극장·전시회 참석하기', '소설·연극·시집 읽기', '공예 작업하기', '사진 찍기', '문화예술 행사 참여하기', '자유로운 창작 활동하기']
+        }
+      },
+      S: {
+        code: 'S',
+        name: '사회형 (Social)',
+        shortName: '사회형',
+        color: '#10B981',
+        badgeBg: 'bg-emerald-500',
+        textColor: 'text-emerald-600',
+        desc: '사람들과 관계를 맺고, 돕고 가르치며 상담하고 봉사하는 활동을 선호합니다.',
+        features: '사람들과 관련된 일 선호, 경쟁상황이나 사물만을 대상으로 하는 활동 기피, 공감과 소통 중시',
+        activities: '정서적 교류로 문제를 해결하는 것 선호, 교육/자선사업/사회사업/상담 관련 활동',
+        workField: '사회복지, 교직, 상담, 보건의료, 서비스 분야 (교사, 사회복지사, 간호사, 상담사, 언어치료사 등)',
+        aiStats: { demand: 55, human: 98, strength: '공감 · 소통력' },
+        aiComment: '공감, 신뢰, 인간적 관계 형성은 AI가 대체할 수 없는 고유 영역이며, 디지털 복지와 에듀테크 수요가 급증합니다.',
+        items: {
+          iam: ['우호적인', '도움을 주는', '이상적인', '통찰력 있는', '사교적인', '이해심 있는'],
+          ican: ['다른 사람을 가르치고 교육시키기', '명확하게 자신을 표현하기', '집단 토론을 이끌기', '다툼을 중재하기', '활동을 계획하거나 감독하기', '다른 사람들과 잘 협력하기'],
+          ilike: ['그룹 작업하기', '문제를 가진 사람 돕기', '회의에 참여하기', '자원봉사하기', '젊은 사람들과 작업하기', '팀으로 짜여진 운동하기']
+        }
+      },
+      E: {
+        code: 'E',
+        name: '진취형 (Enterprising)',
+        shortName: '진취형',
+        color: '#F59E0B',
+        badgeBg: 'bg-amber-500',
+        textColor: 'text-amber-600',
+        desc: '조직의 목표를 달성하거나 경제적 성과를 위해 타인을 이끌고 설득하는 활동을 선호합니다.',
+        features: '조직화된 환경에서 목표 및 경제적 성취 선호, 우위적 지위/권한 및 리더십 선호',
+        activities: '영업/마케팅/정치활동/조직관리, 새로운 프로젝트나 비즈니스 기회를 개척하는 활동',
+        workField: '사업, 판매, 정치, 법률, 마케팅, 유통 분야 (기업경영인, 마케터, 투자매니저, 영업관리자 등)',
+        aiStats: { demand: 70, human: 93, strength: '판단 · 리더십' },
+        aiComment: 'AI 비즈니스 기회를 포착하고 신사업을 실행하는 영역으로, 최종 의사결정과 리더십은 여전히 인간의 영역입니다.',
+        items: {
+          iam: ['자신감 있는', '적극적인', '사교적인', '설득력 있는', '열정적인', '활동적인'],
+          ican: ['프로젝트 시작하기', '자신만의 방식으로 사람들을 설득하기', '물건 매도하기 또는 아이디어 홍보하기', '연설하기', '활동 조직하기', '선도(앞장)하기'],
+          ilike: ['다른 사람에 영향을 미치는 결정 만들기', '공식적인 추대', '지도력 또는 판매활동에 대한 수상', '자신의 정치적 입장 고수하기', '중요한 인물 만나기', '상품 판매하기']
+        }
+      },
+      C: {
+        code: 'C',
+        name: '관습형 (Conventional)',
+        shortName: '관습형',
+        color: '#06B6D4',
+        badgeBg: 'bg-cyan-500',
+        textColor: 'text-cyan-600',
+        desc: '정해진 원칙과 절차에 따라 정확하고 체계적으로 자료를 정리하고 관리하는 활동을 선호합니다.',
+        features: '구체적 정보를 정확하고 세심하게 다루는 업무 선호, 체계적이고 구조화된 대규모 조직 선호',
+        activities: '자료의 세부적 관리, 보고서/차트 작성, 통계/재고관리/경리·회계/문서관리',
+        workField: '회계/금융, 행정, 데이터 관리, 사무 분야 (회계사, 은행원, 행정공무원, 데이터 관리자 등)',
+        aiStats: { demand: 88, human: 80, strength: '정확성 · 체계' },
+        aiComment: '단순 규칙 기반 업무는 AI로 자동화되나, AI 감사, 데이터 거버넌스, 윤리 컴플라이언스로 고도화되어 진화합니다.',
+        items: {
+          iam: ['단정한', '정확한', '수(數)와 관련된 일에 이끌리는', '체계적인', '양심적인·성실한', '유능한·효율적인'],
+          ican: ['체계적으로 일하기', '단시간에 많은 업무를 처리하기', '정확하게 기록하기', '컴퓨터 단말기 사용하기', '효과적으로 비즈니스 편지작성하기', '명단 작성하기'],
+          ilike: ['명확하게 정의된 절차 따르기', '컴퓨터 장비를 사용하기', '수리업무 수행하기', '기록하기', '세부적인 일들 담당하기', '계획표대로 실천하기']
+        }
+      }
+    };
+
+    // -------------------------------------------------------------
+    // 2. 180개 신직업 데이터 (유형별 30개)
+    // -------------------------------------------------------------
+    const newJobsDB = [
+      // R 현실형 (30개)
+      { type: 'R', id: 1, name: '로봇 유지보수 엔지니어' },
+      { type: 'R', id: 2, name: '드론 운용 전문가' },
+      { type: 'R', id: 3, name: '스마트팜 운영 전문가' },
+      { type: 'R', id: 4, name: '자율주행차 기술자' },
+      { type: 'R', id: 5, name: '3D프린팅 제조 전문가' },
+      { type: 'R', id: 6, name: '스마트 물류 자동화 전문가' },
+      { type: 'R', id: 7, name: 'IoT 설비 관리 기술자' },
+      { type: 'R', id: 8, name: '친환경 에너지 설치 기술자' },
+      { type: 'R', id: 9, name: 'AR 현장 교육 트레이너' },
+      { type: 'R', id: 10, name: '디지털 트윈 모델링 기술자' },
+      { type: 'R', id: 11, name: '수중 드론 조종 기술자' },
+      { type: 'R', id: 12, name: 'AI 기반 시설 진단 전문가' },
+      { type: 'R', id: 13, name: '스마트 건설 현장 관리자' },
+      { type: 'R', id: 14, name: '의료기기 유지보수 전문가' },
+      { type: 'R', id: 15, name: '반도체 공정 기술자' },
+      { type: 'R', id: 16, name: 'AI 기반 농업 장비 운용사' },
+      { type: 'R', id: 17, name: '우주 발사체 지원 기술자' },
+      { type: 'R', id: 18, name: '전기차 정비 전문가' },
+      { type: 'R', id: 19, name: '스마트 항만 운영 기술자' },
+      { type: 'R', id: 20, name: '수소 에너지 설비 기술자' },
+      { type: 'R', id: 21, name: '산업용 웨어러블 로봇 관리사' },
+      { type: 'R', id: 22, name: '디지털 지도 제작 기술자' },
+      { type: 'R', id: 23, name: '수직농장 운영 전문가' },
+      { type: 'R', id: 24, name: 'AI 기반 안전관리 전문가' },
+      { type: 'R', id: 25, name: '스마트 그리드 관리 기술자' },
+      { type: 'R', id: 26, name: '바이오프린팅 기술자' },
+      { type: 'R', id: 27, name: '첨단 소재 생산 기술자' },
+      { type: 'R', id: 28, name: '자동화 설비 프로그래머' },
+      { type: 'R', id: 29, name: '로봇 용접 전문가' },
+      { type: 'R', id: 30, name: '스마트 배수시설 관리 전문가' },
+
+      // I 탐구형 (30개)
+      { type: 'I', id: 31, name: 'AI 연구 과학자' },
+      { type: 'I', id: 32, name: '데이터 분석가' },
+      { type: 'I', id: 33, name: '바이오인포매틱스 연구원' },
+      { type: 'I', id: 34, name: '양자컴퓨팅 연구원' },
+      { type: 'I', id: 35, name: '사이버보안 분석가' },
+      { type: 'I', id: 36, name: '기후변화 모델링 과학자' },
+      { type: 'I', id: 37, name: '신약 개발 AI 연구원' },
+      { type: 'I', id: 38, name: '뇌-컴퓨터 인터페이스 연구원' },
+      { type: 'I', id: 39, name: '우주탐사 데이터 분석가' },
+      { type: 'I', id: 40, name: '자연어처리(NLP) 연구원' },
+      { type: 'I', id: 41, name: '의료 영상 AI 분석가' },
+      { type: 'I', id: 42, name: '생성형 AI 안전 연구원' },
+      { type: 'I', id: 43, name: '지능형 교통시스템 연구원' },
+      { type: 'I', id: 44, name: '해양 빅데이터 연구원' },
+      { type: 'I', id: 45, name: '유전체 데이터 과학자' },
+      { type: 'I', id: 46, name: 'AI 윤리 연구원' },
+      { type: 'I', id: 47, name: '로봇공학 연구원' },
+      { type: 'I', id: 48, name: '재료 과학 데이터 분석가' },
+      { type: 'I', id: 49, name: '스마트시티 데이터 연구원' },
+      { type: 'I', id: 50, name: '딥러닝 알고리즘 개발자' },
+      { type: 'I', id: 51, name: '디지털 헬스 연구원' },
+      { type: 'I', id: 52, name: '강화학습 시스템 연구원' },
+      { type: 'I', id: 53, name: 'AI 기반 금융 모델링 연구원' },
+      { type: 'I', id: 54, name: '생물 모방 공학 연구원' },
+      { type: 'I', id: 55, name: 'AI 기반 신소재 탐색 연구원' },
+      { type: 'I', id: 56, name: '지진 예측 데이터 과학자' },
+      { type: 'I', id: 57, name: '언어 모델 평가 전문가' },
+      { type: 'I', id: 58, name: '뉴로모픽 컴퓨팅 연구원' },
+      { type: 'I', id: 59, name: '엣지 AI 시스템 연구원' },
+      { type: 'I', id: 60, name: '행동 데이터 분석가' },
+
+      // A 예술형 (30개)
+      { type: 'A', id: 61, name: 'AI 콘텐츠 크리에이터' },
+      { type: 'A', id: 62, name: 'XR·메타버스 아티스트' },
+      { type: 'A', id: 63, name: '게임 내러티브 디자이너' },
+      { type: 'A', id: 64, name: 'AI 뮤직 프로듀서' },
+      { type: 'A', id: 65, name: '브랜드 경험 디자이너' },
+      { type: 'A', id: 66, name: '생성형 AI 프롬프트 아티스트' },
+      { type: 'A', id: 67, name: '가상 패션 디자이너' },
+      { type: 'A', id: 68, name: '몰입형 공간 디자이너' },
+      { type: 'A', id: 69, name: '디지털 향기 디자이너' },
+      { type: 'A', id: 70, name: 'AI 시나리오 작가' },
+      { type: 'A', id: 71, name: '홀로그램 퍼포먼스 아티스트' },
+      { type: 'A', id: 72, name: '데이터 시각화 아티스트' },
+      { type: 'A', id: 73, name: 'AI 협업 음악가' },
+      { type: 'A', id: 74, name: '소셜미디어 스토리텔러' },
+      { type: 'A', id: 75, name: '디지털 웰니스 콘텐츠 디자이너' },
+      { type: 'A', id: 76, name: '가상 인플루언서 크리에이터' },
+      { type: 'A', id: 77, name: 'NFT·디지털 아트 큐레이터' },
+      { type: 'A', id: 78, name: 'AI 보조 건축 디자이너' },
+      { type: 'A', id: 79, name: '인터랙티브 미디어 아티스트' },
+      { type: 'A', id: 80, name: 'UX 감성 디자이너' },
+      { type: 'A', id: 81, name: 'AI 기반 광고 크리에이티브 디렉터' },
+      { type: 'A', id: 82, name: '3D 캐릭터 애니메이터' },
+      { type: 'A', id: 83, name: '게임 월드 빌더' },
+      { type: 'A', id: 84, name: 'XR 교육 콘텐츠 개발자' },
+      { type: 'A', id: 85, name: 'AI 패션 스타일리스트' },
+      { type: 'A', id: 86, name: '디지털 문화재 복원 전문가' },
+      { type: 'A', id: 87, name: '바이오 아트 아티스트' },
+      { type: 'A', id: 88, name: '공공 미디어 아트 큐레이터' },
+      { type: 'A', id: 89, name: 'AI 동화 작가·일러스트레이터' },
+      { type: 'A', id: 90, name: '사운드 디자이너' },
+
+      // S 사회형 (30개)
+      { type: 'S', id: 91, name: 'AI 리터러시 교육자' },
+      { type: 'S', id: 92, name: '디지털 복지 상담사' },
+      { type: 'S', id: 93, name: '테크 기반 사회복지사' },
+      { type: 'S', id: 94, name: '원격의료 코디네이터' },
+      { type: 'S', id: 95, name: '멘탈헬스 테크 코치' },
+      { type: 'S', id: 96, name: 'AI 기반 진로상담사' },
+      { type: 'S', id: 97, name: '노인 디지털 돌봄 전문가' },
+      { type: 'S', id: 98, name: '디지털 치료사 (DTx 전문가)' },
+      { type: 'S', id: 99, name: 'AI 보조 특수교육 교사' },
+      { type: 'S', id: 100, name: '온라인 커뮤니티 매니저' },
+      { type: 'S', id: 101, name: '사회적 가치 설계 컨설턴트' },
+      { type: 'S', id: 102, name: '디지털 격차 해소 전문가' },
+      { type: 'S', id: 103, name: '다문화 온라인 지원 전문가' },
+      { type: 'S', id: 104, name: 'AI 기반 재활 코치' },
+      { type: 'S', id: 105, name: '정신건강 플랫폼 기획자' },
+      { type: 'S', id: 106, name: '비영리 테크 매니저' },
+      { type: 'S', id: 107, name: '학습 경험 설계자(LXD)' },
+      { type: 'S', id: 108, name: '온라인 위기개입 상담사' },
+      { type: 'S', id: 109, name: 'AI 돌봄 서비스 기획자' },
+      { type: 'S', id: 110, name: '스마트 케어 코디네이터' },
+      { type: 'S', id: 111, name: '디지털 자원봉사 코디네이터' },
+      { type: 'S', id: 112, name: '감정 인식 AI 훈련 전문가' },
+      { type: 'S', id: 113, name: '시민 디지털 교육 코치' },
+      { type: 'S', id: 114, name: '청소년 미디어 리터러시 교사' },
+      { type: 'S', id: 115, name: 'AI 기반 장애인 지원 전문가' },
+      { type: 'S', id: 116, name: '노동 전환 상담사(리스킬링 코치)' },
+      { type: 'S', id: 117, name: '커뮤니티 임팩트 데이터 분석가' },
+      { type: 'S', id: 118, name: '소셜 이노베이션 기획자' },
+      { type: 'S', id: 119, name: '글로벌 e-러닝 콘텐츠 코디네이터' },
+      { type: 'S', id: 120, name: '헬스케어 내비게이터' },
+
+      // E 진취형 (30개)
+      { type: 'E', id: 121, name: 'AI 스타트업 창업가' },
+      { type: 'E', id: 122, name: '테크 프로덕트 매니저(PM)' },
+      { type: 'E', id: 123, name: '디지털 마케팅 전략가' },
+      { type: 'E', id: 124, name: 'ESG 테크 컨설턴트' },
+      { type: 'E', id: 125, name: '플랫폼 비즈니스 기획자' },
+      { type: 'E', id: 126, name: 'AI 비즈니스 개발 매니저' },
+      { type: 'E', id: 127, name: '크리에이터 이코노미 전략가' },
+      { type: 'E', id: 128, name: '스마트시티 사업 기획자' },
+      { type: 'E', id: 129, name: '딥테크 투자 분석가' },
+      { type: 'E', id: 130, name: '그린테크 사업 개발자' },
+      { type: 'E', id: 131, name: '디지털 전환(DX) 컨설턴트' },
+      { type: 'E', id: 132, name: '구독 서비스 기획자' },
+      { type: 'E', id: 133, name: 'AI 기반 부동산 투자 분석가' },
+      { type: 'E', id: 134, name: '테크 기업 세일즈 디렉터' },
+      { type: 'E', id: 135, name: '스포츠 데이터 비즈니스 기획자' },
+      { type: 'E', id: 136, name: 'e스포츠 사업 기획자' },
+      { type: 'E', id: 137, name: 'AI 기반 PR 전략가' },
+      { type: 'E', id: 138, name: '핀테크 서비스 기획자' },
+      { type: 'E', id: 139, name: '글로벌 SaaS 영업 전문가' },
+      { type: 'E', id: 140, name: '디지털 헬스 사업 기획자' },
+      { type: 'E', id: 141, name: '테크 정책 로비스트' },
+      { type: 'E', id: 142, name: 'AI 규제 대응 전략 컨설턴트' },
+      { type: 'E', id: 143, name: '메타버스 비즈니스 개발자' },
+      { type: 'E', id: 144, name: '크라우드펀딩 플랫폼 기획자' },
+      { type: 'E', id: 145, name: '글로벌 콘텐츠 유통 전략가' },
+      { type: 'E', id: 146, name: '테크 스타트업 액셀러레이터' },
+      { type: 'E', id: 147, name: '소셜 임팩트 투자자 (임팩트VC)' },
+      { type: 'E', id: 148, name: '디지털 광고 운영 전문가' },
+      { type: 'E', id: 149, name: '모빌리티 서비스 기획자' },
+      { type: 'E', id: 150, name: '블록체인 비즈니스 컨설턴트' },
+
+      // C 관습형 (30개)
+      { type: 'C', id: 151, name: 'AI 감사(Audit) 전문가' },
+      { type: 'C', id: 152, name: '디지털 포렌식 분석가' },
+      { type: 'C', id: 153, name: '데이터 거버넌스 관리자' },
+      { type: 'C', id: 154, name: '핀테크 컴플라이언스 전문가' },
+      { type: 'C', id: 155, name: '자동화 프로세스 설계자' },
+      { type: 'C', id: 156, name: '클라우드 보안 관리자' },
+      { type: 'C', id: 157, name: 'AI 모델 품질 관리 전문가' },
+      { type: 'C', id: 158, name: '디지털 자산 관리 전문가' },
+      { type: 'C', id: 159, name: '스마트 계약 감사 전문가' },
+      { type: 'C', id: 160, name: 'ERP 시스템 관리자' },
+      { type: 'C', id: 161, name: '정보보호 최고책임자(CISO) 보좌' },
+      { type: 'C', id: 162, name: '개인정보 보호 전문가' },
+      { type: 'C', id: 163, name: 'ESG 데이터 보고 전문가' },
+      { type: 'C', id: 164, name: 'AI 리스크 관리 전문가' },
+      { type: 'C', id: 165, name: '디지털 세무 전문가' },
+      { type: 'C', id: 166, name: '공급망 데이터 분석가' },
+      { type: 'C', id: 167, name: '규제 기술(RegTech) 전문가' },
+      { type: 'C', id: 168, name: '의료 데이터 관리 전문가' },
+      { type: 'C', id: 169, name: 'AI 기반 회계 자동화 전문가' },
+      { type: 'C', id: 170, name: '정부 데이터 분석가' },
+      { type: 'C', id: 171, name: '사이버 보험 전문가' },
+      { type: 'C', id: 172, name: '디지털 증거 관리 전문가' },
+      { type: 'C', id: 173, name: '비즈니스 인텔리전스(BI) 개발자' },
+      { type: 'C', id: 174, name: '데이터 품질 관리자' },
+      { type: 'C', id: 175, name: '자동화 세관신고 전문가' },
+      { type: 'C', id: 176, name: '디지털 계약 관리 전문가' },
+      { type: 'C', id: 177, name: '스마트 감사 시스템 운영자' },
+      { type: 'C', id: 178, name: 'IoT 데이터 보안 전문가' },
+      { type: 'C', id: 179, name: 'AI 기반 재고 관리 전문가' },
+      { type: 'C', id: 180, name: '행정 자동화 설계 전문가' }
+    ];
+
+    // -------------------------------------------------------------
+    // 3. 상태 관리 (localStorage 자동 저장 & 단계 복원 탑재!)
+    // -------------------------------------------------------------
+    const STORAGE_KEY = 'career_holland_app_data_v3';
+
+    const defaultState = {
+      currentStep: 0,
+      currentTypeTab: 'R',
+      checks: {
+        R: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) },
+        I: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) },
+        A: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) },
+        S: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) },
+        E: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) },
+        C: { iam: Array(6).fill(false), ican: Array(6).fill(false), ilike: Array(6).fill(false) }
+      },
+      selectedJobIds: [],
+      currentJobFilter: 'MATCH',
+      jobSearchTerm: '',
+      inputs: {
+        major: '',
+        mbti: 'ESTJ',
+        jobValue: '성취',
+        years: 10,
+        jobCount: 30,
+        priorityCount: 5
+      }
+    };
+
+    let state = JSON.parse(JSON.stringify(defaultState));
+    state.selectedJobIds = new Set(state.selectedJobIds);
+
+    function saveState() {
+      try {
+        const toSave = {
+          ...state,
+          selectedJobIds: Array.from(state.selectedJobIds)
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      } catch (e) {
+        console.error('Storage save failed', e);
+      }
+    }
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          state.currentStep = parsed.currentStep !== undefined ? parsed.currentStep : 0;
+          state.checks = parsed.checks || defaultState.checks;
+          state.selectedJobIds = new Set(parsed.selectedJobIds || []);
+          state.inputs = parsed.inputs || defaultState.inputs;
+        }
+      } catch (e) {
+        console.error('Storage load failed', e);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 4. 화면 전환
+    // -------------------------------------------------------------
+    function goToStep(stepIndex) {
+      state.currentStep = stepIndex;
+      saveState();
+      
+      document.querySelectorAll('.screen-view').forEach(s => s.classList.add('hidden'));
+      if (stepIndex === 0) {
+        document.getElementById('screen-intro').classList.remove('hidden');
+      } else {
+        document.getElementById(`screen-step-${stepIndex}`).classList.remove('hidden');
+      }
+
+      const percentages = [10, 35, 60, 80, 100];
+      document.getElementById('top-progress-bar').style.width = `${percentages[stepIndex]}%`;
+
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`nav-step-${i}`);
+        if (!btn) continue;
+        if (i === stepIndex) {
+          btn.className = 'px-1.5 py-1 rounded-md bg-orange-50 text-orange-600 font-extrabold flex items-center gap-1 border border-orange-200';
+          btn.querySelector('span:first-child').className = 'w-4 h-4 rounded-full bg-orange-600 text-white flex items-center justify-center text-[10px] font-bold';
+        } else {
+          btn.className = 'px-1.5 py-1 rounded-md text-slate-600 hover:bg-slate-100 transition flex items-center gap-1';
+          btn.querySelector('span:first-child').className = 'w-4 h-4 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-[10px] font-bold';
+        }
+      }
+
+      if (stepIndex === 1) {
+        renderCurrentTypeContent();
+      } else if (stepIndex === 2) {
+        renderResults();
+      } else if (stepIndex === 3) {
+        renderJobsScreen();
+      } else if (stepIndex === 4) {
+        initPromptScreen();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 5. 1단계: 홀랜드 검사
+    // -------------------------------------------------------------
+    function selectTypeTab(typeCode) {
+      state.currentTypeTab = typeCode;
+      
+      const typeKeys = ['R', 'I', 'A', 'S', 'E', 'C'];
+      typeKeys.forEach(code => {
+        const tabBtn = document.getElementById(`type-tab-${code}`);
+        if (!tabBtn) return;
+        if (code === typeCode) {
+          tabBtn.className = `type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 ${hollandData[code].badgeBg} text-white shadow-sm shrink-0`;
+        } else {
+          tabBtn.className = 'type-tab-btn px-2.5 py-1.5 rounded-xl font-bold text-xs whitespace-nowrap transition flex items-center gap-1 bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0';
+        }
+      });
+
+      renderCurrentTypeContent();
+    }
+
+    function renderCurrentTypeContent() {
+      const code = state.currentTypeTab;
+      const data = hollandData[code];
+      const area = document.getElementById('type-content-area');
+      const checks = state.checks[code];
+
+      const scoreIam = checks.iam.filter(Boolean).length;
+      const scoreIcan = checks.ican.filter(Boolean).length;
+      const scoreIlike = checks.ilike.filter(Boolean).length;
+      const totalScore = scoreIam + scoreIcan + scoreIlike;
+
+      area.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 mb-4 gap-2">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg ${data.badgeBg} text-white flex items-center justify-center font-extrabold text-sm shadow-sm shrink-0">
+              ${code}
+            </span>
+            <div>
+              <h3 class="font-extrabold text-sm md:text-base text-slate-900">${data.name}</h3>
+              <p class="text-[11px] text-slate-500">${data.desc}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 self-end sm:self-auto">
+            <span class="text-xs text-slate-500">유형 점수:</span>
+            <span class="text-lg font-black ${data.textColor}">${totalScore} <span class="text-[11px] font-normal text-slate-400">/ 18점</span></span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <!-- I am -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+            <div class="flex items-center justify-between mb-1.5 border-b border-slate-200 pb-1">
+              <span class="font-bold text-xs text-slate-800 flex items-center gap-1">
+                <i class="fa-solid fa-user ${data.textColor}"></i> I am (성향)
+              </span>
+              <span class="text-xs font-bold text-slate-600">${scoreIam} / 6</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mb-2">"나는 ~한 사람이에요"</p>
+            <div class="space-y-1.5">
+              ${data.items.iam.map((item, idx) => `
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 cursor-pointer text-xs transition">
+                  <input type="checkbox" ${checks.iam[idx] ? 'checked' : ''} onchange="toggleCheck('${code}', 'iam', ${idx})" class="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-slate-300 shrink-0">
+                  <span class="${checks.iam[idx] ? 'font-bold text-slate-900' : 'text-slate-700'}">${item}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- I can -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+            <div class="flex items-center justify-between mb-1.5 border-b border-slate-200 pb-1">
+              <span class="font-bold text-xs text-slate-800 flex items-center gap-1">
+                <i class="fa-solid fa-gear ${data.textColor}"></i> I can (능력)
+              </span>
+              <span class="text-xs font-bold text-slate-600">${scoreIcan} / 6</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mb-2">"나는 ~을 할 수 있어요"</p>
+            <div class="space-y-1.5">
+              ${data.items.ican.map((item, idx) => `
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 cursor-pointer text-xs transition">
+                  <input type="checkbox" ${checks.ican[idx] ? 'checked' : ''} onchange="toggleCheck('${code}', 'ican', ${idx})" class="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-slate-300 shrink-0">
+                  <span class="${checks.ican[idx] ? 'font-bold text-slate-900' : 'text-slate-700'}">${item}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- I like -->
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+            <div class="flex items-center justify-between mb-1.5 border-b border-slate-200 pb-1">
+              <span class="font-bold text-xs text-slate-800 flex items-center gap-1">
+                <i class="fa-solid fa-heart ${data.textColor}"></i> I like (흥미)
+              </span>
+              <span class="text-xs font-bold text-slate-600">${scoreIlike} / 6</span>
+            </div>
+            <p class="text-[10px] text-slate-500 mb-2">"나는 ~을 좋아해요"</p>
+            <div class="space-y-1.5">
+              ${data.items.ilike.map((item, idx) => `
+                <label class="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 cursor-pointer text-xs transition">
+                  <input type="checkbox" ${checks.ilike[idx] ? 'checked' : ''} onchange="toggleCheck('${code}', 'ilike', ${idx})" class="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-slate-300 shrink-0">
+                  <span class="${checks.ilike[idx] ? 'font-bold text-slate-900' : 'text-slate-700'}">${item}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+
+      updateBottomBar();
+    }
+
+    function toggleCheck(code, category, index) {
+      state.checks[code][category][index] = !state.checks[code][category][index];
+      saveState();
+      renderCurrentTypeContent();
+    }
+
+    function calculateScores() {
+      const typeKeys = ['R', 'I', 'A', 'S', 'E', 'C'];
+      const scores = {};
+      typeKeys.forEach(code => {
+        const c = state.checks[code];
+        scores[code] = c.iam.filter(Boolean).length + c.ican.filter(Boolean).length + c.ilike.filter(Boolean).length;
+      });
+      return scores;
+    }
+
+    function updateBottomBar() {
+      const scores = calculateScores();
+      const typeKeys = ['R', 'I', 'A', 'S', 'E', 'C'];
+      const current = state.currentTypeTab;
+
+      typeKeys.forEach(code => {
+        const span = document.getElementById(`tab-score-${code}`);
+        if (span) span.innerText = scores[code];
+      });
+
+      const badgesContainer = document.getElementById('bottom-status-badges');
+      if (badgesContainer) {
+        badgesContainer.innerHTML = typeKeys.map(code => {
+          const isCurrent = (code === current);
+          const tData = hollandData[code];
+          return `
+            <button onclick="selectTypeTab('${code}')" class="px-2 py-1 rounded-lg text-xs font-bold transition transform cursor-pointer flex items-center gap-1 shrink-0 ${
+              isCurrent 
+                ? `${tData.badgeBg} text-white scale-105 ring-2 ring-white shadow-md` 
+                : 'bg-slate-800 text-slate-300 hover:bg-slate-700 opacity-80'
+            }">
+              <span>${code}</span>
+              <span class="text-[10px] ${isCurrent ? 'bg-black/20' : 'bg-slate-700'} px-1 rounded">${scores[code]}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      const actionButtons = document.getElementById('bottom-action-buttons');
+      if (actionButtons) {
+        const order = ['R', 'I', 'A', 'S', 'E', 'C'];
+        const currentIdx = order.indexOf(current);
+
+        let html = '';
+        if (currentIdx > 0) {
+          html += `
+            <button onclick="goToPrevTab()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition">
+              <i class="fa-solid fa-chevron-left mr-0.5"></i> 이전
+            </button>
+          `;
+        }
+
+        if (currentIdx < order.length - 1) {
+          html += `
+            <button onclick="goToNextTab()" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-xs font-bold text-white transition flex items-center gap-1">
+              <span>다음</span> <i class="fa-solid fa-chevron-right ml-0.5"></i>
+            </button>
+          `;
+        } else {
+          html += `
+            <button onclick="goToStep(2)" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white transition flex items-center gap-1 shadow-md">
+              <span>결과 확인하기</span> <i class="fa-solid fa-check"></i>
+            </button>
+          `;
+        }
+
+        actionButtons.innerHTML = html;
+      }
+    }
+
+    function goToPrevTab() {
+      const order = ['R', 'I', 'A', 'S', 'E', 'C'];
+      const idx = order.indexOf(state.currentTypeTab);
+      if (idx > 0) selectTypeTab(order[idx - 1]);
+    }
+
+    function goToNextTab() {
+      const order = ['R', 'I', 'A', 'S', 'E', 'C'];
+      const idx = order.indexOf(state.currentTypeTab);
+      if (idx < order.length - 1) selectTypeTab(order[idx + 1]);
+    }
+
+    function resetAllChecks() {
+      const typeKeys = ['R', 'I', 'A', 'S', 'E', 'C'];
+      typeKeys.forEach(code => {
+        state.checks[code].iam.fill(false);
+        state.checks[code].ican.fill(false);
+        state.checks[code].ilike.fill(false);
+      });
+      saveState();
+      renderCurrentTypeContent();
+      showToast('검사 체크가 초기화되었습니다.');
+    }
+
+    // -------------------------------------------------------------
+    // 6. 2단계: 결과 분석 & PDF 다운로드
+    // -------------------------------------------------------------
+    function getTopTypes() {
+      const scores = calculateScores();
+      const sorted = Object.keys(scores).map(code => ({ code, score: scores[code] }))
+        .sort((a, b) => b.score - a.score);
+      
+      const first = sorted[0].score > 0 ? sorted[0] : { code: 'R', score: 0 };
+      const second = sorted[1].score > 0 ? sorted[1] : { code: 'S', score: 0 };
+      return { sorted, first, second, codeStr: `${first.code}${second.code}` };
+    }
+
+    function renderResults() {
+      const { first, second, codeStr } = getTopTypes();
+      const firstData = hollandData[first.code];
+      const secondData = hollandData[second.code];
+
+      document.getElementById('top-holland-code').innerText = codeStr;
+      document.getElementById('top-holland-name').innerText = `${firstData.shortName} · ${secondData.shortName}`;
+      document.getElementById('top-holland-desc').innerText = 
+        `당신의 대표 흥미유형은 1순위 [${firstData.name}]와 2순위 [${secondData.name}]입니다. ` +
+        `${firstData.desc} 동시에 ${secondData.desc}`;
+
+      // AI 수요 통계 (여백 및 간격 대폭 확보)
+      const aiStatsArea = document.getElementById('ai-demand-stats');
+      aiStatsArea.innerHTML = `
+        <div>
+          <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+            <span class="text-slate-600">핵심 강점</span>
+            <span class="text-orange-600 font-bold">${firstData.aiStats.strength}</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+            <span class="text-slate-600">AI 수요 전망</span>
+            <span class="text-blue-600 font-bold">${firstData.aiStats.demand}%</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+            <div class="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style="width: ${firstData.aiStats.demand}%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+            <span class="text-slate-600">인간 고유 필요도</span>
+            <span class="text-emerald-600 font-bold">${firstData.aiStats.human}%</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+            <div class="bg-emerald-600 h-2.5 rounded-full transition-all duration-500" style="width: ${firstData.aiStats.human}%;"></div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('ai-demand-comment').innerHTML = `
+        <strong class="text-slate-800">💡 AI 시대 직무 전망 :</strong> ${firstData.aiComment}
+      `;
+
+      const cardsArea = document.getElementById('top-types-detail-cards');
+      cardsArea.innerHTML = [firstData, secondData].map((d, i) => `
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-lg ${d.badgeBg} text-white font-bold text-xs">
+                ${i === 0 ? '1순위' : '2순위'} 유형
+              </span>
+              <span class="text-xs text-slate-400 font-semibold">${calculateScores()[d.code]}점 / 18점</span>
+            </div>
+            <h4 class="text-base font-extrabold text-slate-900 mb-3">${d.name}</h4>
+            <div class="space-y-3 text-xs sm:text-sm text-slate-600">
+              <div>
+                <strong class="text-slate-800 block mb-1">📌 일반적 특징</strong>
+                <p class="leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">${d.features}</p>
+              </div>
+              <div>
+                <strong class="text-slate-800 block mb-1">🛠️ 작업 활동</strong>
+                <p class="leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">${d.activities}</p>
+              </div>
+              <div>
+                <strong class="text-slate-800 block mb-1">🏢 대표 Work Field</strong>
+                <p class="leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-100">${d.workField}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      drawHollandRadar();
+    }
+
+    function drawHollandRadar() {
+      const canvas = document.getElementById('hollandRadarCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+      const centerX = width / 2;
+      const centerY = height / 2;
+      const radius = 105;
+      const scores = calculateScores();
+
+      ctx.clearRect(0, 0, width, height);
+
+      const types = ['R', 'I', 'A', 'S', 'E', 'C'];
+      const angles = [
+        (-2 * Math.PI) / 3,
+        -Math.PI / 3,
+        0,
+        Math.PI / 3,
+        (2 * Math.PI) / 3,
+        Math.PI
+      ];
+
+      [0.33, 0.66, 1.0].forEach(level => {
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+          const x = centerX + Math.cos(angles[i]) * radius * level;
+          const y = centerY + Math.sin(angles[i]) * radius * level;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = '#E2E8F0';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+
+      for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(centerX + Math.cos(angles[i]) * radius, centerY + Math.sin(angles[i]) * radius);
+        ctx.strokeStyle = '#E2E8F0';
+        ctx.stroke();
+      }
+
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const code = types[i];
+        const val = Math.max(scores[code] || 0, 1);
+        const r = (val / 18) * radius;
+        const x = centerX + Math.cos(angles[i]) * r;
+        const y = centerY + Math.sin(angles[i]) * r;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(234, 88, 12, 0.25)';
+      ctx.fill();
+      ctx.strokeStyle = '#EA580C';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.font = 'bold 11px Pretendard, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      for (let i = 0; i < 6; i++) {
+        const code = types[i];
+        const val = scores[code] || 0;
+        const labelRadius = radius + 20;
+        const lx = centerX + Math.cos(angles[i]) * labelRadius;
+        const ly = centerY + Math.sin(angles[i]) * labelRadius;
+
+        const r = (Math.max(val, 1) / 18) * radius;
+        const px = centerX + Math.cos(angles[i]) * r;
+        const py = centerY + Math.sin(angles[i]) * r;
+        ctx.beginPath();
+        ctx.arc(px, py, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#EA580C';
+        ctx.fill();
+
+        ctx.fillStyle = '#1E293B';
+        ctx.fillText(`${code}(${val})`, lx, ly);
+      }
+    }
+
+    function downloadHollandPDF() {
+      const btn = document.getElementById('btn-download-holland-pdf');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-sm"></i> <span>PDF 생성 중...</span>`;
+      btn.disabled = true;
+
+      const element = document.getElementById('holland-pdf-report-area');
+      const { codeStr } = getTopTypes();
+
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `홀랜드_직업흥미검사결과_${codeStr}형.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        showToast('PDF 파일이 다운로드되었습니다!');
+      }).catch(err => {
+        console.error(err);
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        showToast('PDF 생성 중 오류가 발생했습니다.');
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 7. 3단계: AI 신직업 탐색
+    // -------------------------------------------------------------
+    function renderJobsScreen() {
+      const { first, second } = getTopTypes();
+      const firstData = hollandData[first.code];
+      const secondData = hollandData[second.code];
+
+      const btnContainer = document.getElementById('job-filter-buttons');
+      btnContainer.innerHTML = `
+        <button onclick="filterJobs('MATCH')" id="job-filter-MATCH" class="job-filter-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-orange-600 text-white">
+          ★ 맞춤 (${first.code}·${second.code} 60개)
+        </button>
+        <button onclick="filterJobs('${first.code}')" id="job-filter-${first.code}" class="job-filter-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+          [1순위] ${firstData.shortName} (30개)
+        </button>
+        <button onclick="filterJobs('${second.code}')" id="job-filter-${second.code}" class="job-filter-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+          [2순위] ${secondData.shortName} (30개)
+        </button>
+      `;
+
+      filterJobs(state.currentJobFilter);
+      updateSelectedJobCount();
+    }
+
+    function filterJobs(filterKey) {
+      state.currentJobFilter = filterKey;
+
+      document.querySelectorAll('.job-filter-btn').forEach(btn => {
+        btn.className = 'job-filter-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200';
+      });
+      const activeBtn = document.getElementById(`job-filter-${filterKey}`);
+      if (activeBtn) {
+        activeBtn.className = 'job-filter-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-orange-600 text-white';
+      }
+
+      applyJobFilters();
+    }
+
+    function searchJobs() {
+      state.jobSearchTerm = document.getElementById('job-search-input').value.trim().toLowerCase();
+      applyJobFilters();
+    }
+
+    function applyJobFilters() {
+      const { first, second } = getTopTypes();
+      const container = document.getElementById('jobs-grid-container');
+      let filtered = newJobsDB;
+
+      if (state.currentJobFilter === 'MATCH') {
+        filtered = filtered.filter(j => j.type === first.code || j.type === second.code);
+      } else {
+        filtered = filtered.filter(j => j.type === state.currentJobFilter);
+      }
+
+      if (state.jobSearchTerm) {
+        filtered = filtered.filter(j => j.name.toLowerCase().includes(state.jobSearchTerm));
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-10 text-center text-slate-400 text-xs">
+            <i class="fa-solid fa-circle-exclamation text-xl mb-1 block"></i>
+            검색 결과가 없습니다.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(job => {
+        const isChecked = state.selectedJobIds.has(job.id);
+        const tData = hollandData[job.type];
+        return `
+          <div class="bg-white p-2.5 rounded-xl border ${isChecked ? 'border-orange-500 ring-2 ring-orange-200' : 'border-slate-200'} shadow-sm hover:border-slate-300 transition flex items-center justify-between">
+            <div class="flex items-center gap-1.5 overflow-hidden pr-1">
+              <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${tData.badgeBg} text-white shrink-0">
+                ${job.type}
+              </span>
+              <span class="font-bold text-xs text-slate-800 truncate">${job.name}</span>
+            </div>
+            <label class="flex items-center gap-1 cursor-pointer text-xs font-semibold ${isChecked ? 'text-orange-600' : 'text-slate-400'} shrink-0 ml-1">
+              <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleJobSelect(${job.id})" class="w-4 h-4 rounded text-orange-600 focus:ring-orange-500 border-slate-300">
+              <span class="text-[10px]">${isChecked ? '찜' : '선택'}</span>
+            </label>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleJobSelect(jobId) {
+      if (state.selectedJobIds.has(jobId)) {
+        state.selectedJobIds.delete(jobId);
+      } else {
+        state.selectedJobIds.add(jobId);
+      }
+      saveState();
+      applyJobFilters();
+      updateSelectedJobCount();
+    }
+
+    function updateSelectedJobCount() {
+      const count = state.selectedJobIds.size;
+      const countSpan = document.getElementById('selected-job-count');
+      if (countSpan) countSpan.innerText = `${count}개`;
+    }
+
+    function clearSelectedJobs() {
+      state.selectedJobIds.clear();
+      saveState();
+      applyJobFilters();
+      updateSelectedJobCount();
+      showToast('찜한 직업 목록을 비웠습니다.');
+    }
+
+    // -------------------------------------------------------------
+    // 8. 4단계: 조건 입력 및 프롬프트 조립
+    // -------------------------------------------------------------
+    function initPromptScreen() {
+      const { codeStr } = getTopTypes();
+      document.getElementById('input-holland').value = codeStr;
+      
+      if (state.inputs) {
+        if (state.inputs.major !== undefined) document.getElementById('input-major').value = state.inputs.major;
+        if (state.inputs.mbti) document.getElementById('input-mbti').value = state.inputs.mbti;
+        if (state.inputs.jobValue) document.getElementById('input-value').value = state.inputs.jobValue;
+        if (state.inputs.years) document.getElementById('input-years').value = state.inputs.years;
+        if (state.inputs.jobCount) document.getElementById('input-job-count').value = state.inputs.jobCount;
+        if (state.inputs.priorityCount) document.getElementById('input-priority-count').value = state.inputs.priorityCount;
+      }
+
+      renderPromptSelectedJobsBox();
+      renderJobValueChips();
+      buildPrompt();
+    }
+
+    function renderPromptSelectedJobsBox() {
+      const box = document.getElementById('prompt-selected-jobs-box');
+      if (state.selectedJobIds.size === 0) {
+        box.innerHTML = `<span class="text-slate-400 text-[10px]">3단계에서 체크한 직업이 여기에 자동 포함됩니다.</span>`;
+        return;
+      }
+      const selectedJobs = newJobsDB.filter(j => state.selectedJobIds.has(j.id));
+      box.innerHTML = selectedJobs.map(j => `
+        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-orange-100 text-orange-800 text-[10px] font-semibold">
+          ${j.name}
+          <button type="button" onclick="removeJobFromPrompt(${j.id})" class="text-orange-600 hover:text-orange-900 font-bold">×</button>
+        </span>
+      `).join('');
+    }
+
+    function removeJobFromPrompt(jobId) {
+      state.selectedJobIds.delete(jobId);
+      saveState();
+      renderPromptSelectedJobsBox();
+      updateSelectedJobCount();
+      buildPrompt();
+    }
+
+    function setMajor(majorText) {
+      document.getElementById('input-major').value = majorText;
+      buildPrompt();
+    }
+
+    const jobValueFactors = [
+      { name: '사회공헌', desc: '일을 통해 다른 사람이나 사회에 도움이 되는 것을 중시한다.' },
+      { name: '성취', desc: '자신이 세운 목표를 실현하기 위해 계획한 일에 관심을 가지고, 자신의 능력을 발휘하여, 자신이 세운 목표를 이루고 달성해 나가는 것을 중시한다.' },
+      { name: '경제적 보상', desc: '일에 대한 보상으로 경제적인 보상을 중시한다.' },
+      { name: '일과 삶의 균형', desc: '일 뿐만 아니라 자신의 삶에서도 만족할 수 있도록 적절한 균형을 가질 수 있는 것을 중시한다.' },
+      { name: '자기개발', desc: '직업을 통해 지식, 기술, 능력 등을 발전시켜 성장해 나가는 것을 중시한다.' },
+      { name: '자율성', desc: '자율적으로 업무를 수행해 나가는 것을 중시한다.' },
+      { name: '사회적 인정', desc: '다른 사람들과 사회로부터 일의 가치를 인정받는 것을 중시한다.' },
+      { name: '직업안정', desc: '직업에서 오랫동안 안정적으로 일할 수 있는지를 중시한다.' },
+      { name: '변화지향', desc: '업무가 고정되어 있지 않고 변화 가능한 것을 중시한다.' }
+    ];
+
+    function renderJobValueChips() {
+      const wrap = document.getElementById('job-value-chips');
+      if (!wrap) return;
+      const current = document.getElementById('input-value').value.trim();
+      wrap.innerHTML = jobValueFactors.map(f => `
+        <button type="button" onclick="selectJobValue('${f.name}')" class="text-[11px] px-2.5 py-1 rounded-full border font-semibold transition ${f.name === current ? 'bg-orange-500 border-orange-500 text-white' : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'}">${f.name}</button>
+      `).join('');
+      const match = jobValueFactors.find(f => f.name === current);
+      document.getElementById('job-value-desc').innerText = match ? match.desc : '';
+    }
+
+    function selectJobValue(name) {
+      document.getElementById('input-value').value = name;
+      renderJobValueChips();
+      buildPrompt();
+    }
+
+    function setValue(valText) {
+      document.getElementById('input-value').value = valText;
+      buildPrompt();
+    }
+
+    function buildPrompt() {
+      const holland = document.getElementById('input-holland').value.trim() || 'RS';
+      const major = document.getElementById('input-major').value.trim() || '비전공/전공무관';
+      const mbti = document.getElementById('input-mbti').value.trim() || 'ESTJ';
+      const jobValue = document.getElementById('input-value').value.trim() || '성취';
+      const jobValueMatch = jobValueFactors.find(f => f.name === jobValue);
+      const jobValueSentence = jobValueMatch
+        ? jobValueMatch.desc.replace(/중시한다\.$/, '중시하는 직업을 희망합니다.')
+        : `${jobValue}을(를) 받을 수 있는 직업을 희망합니다.`;
+      
+      const years = parseInt(document.getElementById('input-years').value) || 10;
+      const jobCount = parseInt(document.getElementById('input-job-count').value) || 30;
+      const priorityCount = parseInt(document.getElementById('input-priority-count').value) || 5;
+
+      state.inputs = { major, mbti, jobValue, years, jobCount, priorityCount };
+      saveState();
+
+      const labelTable = document.getElementById('label-query-table');
+      if (labelTable) labelTable.innerText = `${jobCount}개 직업 표로 정리`;
+
+      const currentYear = 2026;
+      const endYear = currentYear + years;
+
+      const selectedJobs = newJobsDB.filter(j => state.selectedJobIds.has(j.id)).map(j => j.name);
+      const interestJobsStr = selectedJobs.length > 0 
+        ? `\n- 관심 있는 신직업 후보: ${selectedJobs.join(', ')}` 
+        : '';
+
+      const promptTemplate = 
+`당신은 30년 경력의 국내 최고 직업상담·진로설계 전문가입니다.
+
+나의 직업흥미검사 결과는 ${holland}이고, 전공은 ${major}, 성격유형(MBTI)은 ${mbti}이며, ${jobValueSentence}${interestJobsStr}
+
+이 정보를 바탕으로 향후 ${years}년(${currentYear}~${endYear}년) 동안 유망하면서 나에게 적합한 직업 ${jobCount}개를 추천해 주세요.
+
+[요청 사항]
+1. 각 직업마다 추천 이유, 전공 활용 가능성, 진입 난이도, 예상 소득 수준, 향후 ${years}년 전망, 준비 과정을 간략히 설명해 주세요.
+2. 현재 전공을 바로 활용할 수 있는 직업과 추가 교육·자격증이 필요한 직업을 균형 있게 구분해 주세요.
+3. 검사 결과는 참고 자료로만 활용해 적합성을 단정하지 마시고, 신뢰할 수 있는 통계를 근거로 하되 자료의 기준 연도와 전망의 불확실성을 밝혀 주세요.
+4. 마지막으로 우선 검토할 핵심 직업 ${priorityCount}개를 골라, 아래의 3단계로 구체적인 진입 전략과 준비 로드맵을 제시해 주세요:
+   - 준비 단계 (~1년)
+   - 진입 단계 (1~3년)
+   - 성장 단계 (3년 이후)`;
+
+      document.getElementById('generated-prompt-text').value = promptTemplate;
+    }
+
+    // -------------------------------------------------------------
+    // 9. 프롬프트 복사 및 스마트폰 앱/새창 실행
+    // -------------------------------------------------------------
+    function copyPromptToClipboard() {
+      const promptText = document.getElementById('generated-prompt-text').value;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(promptText).then(() => {
+          showToast('프롬프트 복사 완료! AI 대화창에 붙여넣으세요.');
+        }).catch(() => {
+          fallbackCopyText(promptText);
+        });
+      } else {
+        fallbackCopyText(promptText);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.getElementById('generated-prompt-text');
+      textarea.select();
+      document.execCommand('copy');
+      showToast('프롬프트 복사 완료! AI 대화창에 붙여넣으세요.');
+    }
+
+    function smartLaunchAI(service) {
+      copyPromptToClipboard();
+
+      if (service === 'chatgpt') {
+        const appUrl = 'chatgpt://';
+        const webUrl = 'https://chatgpt.com';
+
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.location.href = appUrl;
+          setTimeout(() => {
+            window.open(webUrl, '_blank', 'noopener,noreferrer');
+          }, 600);
+        } else {
+          window.open(webUrl, '_blank', 'noopener,noreferrer');
+        }
+      } else if (service === 'wrtn') {
+        window.open('https://wrtn.ai', '_blank', 'noopener,noreferrer');
+      } else if (service === 'gemini') {
+        window.open('https://gemini.google.com', '_blank', 'noopener,noreferrer');
+      } else if (service === 'claude') {
+        window.open('https://claude.ai', '_blank', 'noopener,noreferrer');
+      }
+    }
+
+    function copyDynamicQuery(type) {
+      const jobCount = parseInt(document.getElementById('input-job-count').value) || 30;
+      let text = '';
+
+      if (type === 'table') {
+        text = `추천해 주신 ${jobCount}개 직업 목록을 한눈에 비교하기 편하도록 [직업명 / 구분(전공활용 또는 추가자격) / 진입난이도 / 예상소득 / 향후전망] 항목을 포함한 깔끔한 표로 정리해 주세요.`;
+      } else if (type === 'detail') {
+        text = `우선 검토할 핵심 직업 중 1순위 직업에 대해 일상적인 구체적 업무 내용, 실무 필수 역량, 그리고 반드시 취득해야 할 국가 자격증을 더 상세히 알려주세요.`;
+      } else if (type === 'monthly') {
+        text = `사회복무 기간 및 소집해제 이후를 대비하여, 1순위 추천 직업 진입을 위한 1년 준비 계획을 1월부터 12월까지 월별 구체적 실행 목표(자격증, 학습, 포트폴리오 등)로 작성해 주세요.`;
+      } else if (type === 'hrd') {
+        text = `이 직업으로 취업하기 위해 고용24(HRD-Net)에서 검색하여 수강할 수 있는 추천 국비지원 직업훈련 과정이나 청년 취업지원 제도를 소개해 주세요.`;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`꼬리질문 복사 완료! AI 대화창에 붙여넣으세요.`);
+        });
+      } else {
+        fallbackCopyText(text);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 10. 토스트 알림창
+    // -------------------------------------------------------------
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msgSpan = document.getElementById('toast-msg');
+      msgSpan.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2300);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      goToStep(state.currentStep || 0);
     });
-    video.srcObject=stream;
-    document.getElementById('vision-start-screen').style.display='none';
-    document.getElementById('filter-label').style.display='block';
-    video.addEventListener('loadedmetadata',()=>{
-      vCanvas.width=video.videoWidth||window.innerWidth;
-      vCanvas.height=video.videoHeight||window.innerHeight;
-      camRunning=true;
-      if(animFrame) cancelAnimationFrame(animFrame);
-      drawLoop();
-    },{once:true});
-  } catch(e) {
-    alert('카메라 접근 권한이 필요합니다.\n브라우저 설정에서 카메라 권한을 허용해 주세요.');
-  }
-}
-</script>
+  </script>
 </body>
 </html>
